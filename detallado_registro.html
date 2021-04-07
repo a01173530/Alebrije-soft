@@ -10,63 +10,95 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
+    <!-- mi css-->
+    <link rel="stylesheet" href="css/master.css">
     <title>Detallado de Registro</title>
 </head>
 
 <body>
+    <div class="container">
+        <div class="row">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <img class="imgNav" src="/img/LOGO_DSI.svg" alt="LogoDSI">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Inventarios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Panel Administrativo</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
 
-    <img src="img/LOGO_DSI.svg" class="img-thumbnail" alt="Logo DSI" height="250" width="250">
+        <div class="row">
+            <div class="col justify-content-center">
+                <form>
+                    <fieldset disabled>
 
-    <form>
-        <fieldset disabled>
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="disabledTextInput">Inventario de origen</label>
-                    <input type="text" id="disabledTextInput" class="form-control" placeholder="Semillas">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="disabledTextInput">Inventario destino</label>
-                    <input type="text" id="disabledTextInput" class="form-control" placeholder="Plántulas">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="disabledTextInput">Razón de traslado</label>
-                    <input type="text" id="disabledTextInput" class="form-control" placeholder="Crecimiento">
-                </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="disabledTextInput">Inventario de origen</label>
+                                <input type="text" id="disabledTextInput" class="form-control" placeholder="Semillas">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="disabledTextInput">Inventario destino</label>
+                                <input type="text" id="disabledTextInput" class="form-control" placeholder="Plántulas">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="disabledTextInput">Razón de traslado</label>
+                                <input type="text" id="disabledTextInput" class="form-control"
+                                    placeholder="Crecimiento">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <fieldset disabled>
+                                    <label for="disabledTextInput">Fecha de traslado</label>
+                                    <input type="text" id="disabledTextInput" class="form-control"
+                                        placeholder="20/08/2020">
+                                </fieldset>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="disabledTextInput">Nombre científico</label>
+                                <input type="text" id="disabledTextInput" class="form-control"
+                                    placeholder="Echinocactus platyacanthus">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="disabledTextInput">Número de ejemplares a trasladados</label>
+                                <input type="text" id="disabledTextInput" class="form-control" placeholder="50">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="disabledTextInput">Zona de origen</label>
+                                <input type="text" id="disabledTextInput" class="form-control" placeholder="Inventario">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="disabledTextInput">Zona destino</label>
+                                <input type="text" id="disabledTextInput" class="form-control"
+                                    placeholder="Jardín Xerófilo">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="disabledTextInput">Número de ejemplares</label>
+                                <input type="text" id="disabledTextInput" class="form-control"
+                                    placeholder="0011 - 0061">
+                            </div>
+                        </div>
+                    </fieldset>
+                    <button type="submit" class="btn btn-primary ">Sign in</button>
+                </form>
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="disabledTextInput">Fecha de traslado</label>
-                    <input type="text" id="disabledTextInput" class="form-control" placeholder="20/08/2020">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="disabledTextInput">Nombre científico</label>
-                    <input type="text" id="disabledTextInput" class="form-control" placeholder="Echinocactus platyacanthus">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="disabledTextInput">Número de ejemplares a trasladados</label>
-                    <input type="text" id="disabledTextInput" class="form-control" placeholder="50">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="disabledTextInput">Zona de origen</label>
-                    <input type="text" id="disabledTextInput" class="form-control" placeholder="Inventario">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="disabledTextInput">Zona destino</label>
-                    <input type="text" id="disabledTextInput" class="form-control" placeholder="Jardín Xerófilo">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="disabledTextInput">Número de ejemplares</label>
-                    <input type="text" id="disabledTextInput" class="form-control" placeholder="0011 - 0061">
-                </div>
-            </div>
-        </fieldset>
-        
+        </div>
 
+    </div>
 
-        <button type="submit" class="btn btn-primary">Sign in</button>
-    </form>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
