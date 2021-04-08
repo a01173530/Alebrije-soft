@@ -11,3 +11,13 @@ table {
     padding: 0;
     border-spacing: 0;
 }
+
+/*seccion de estilo para listado de solucitudes*/
+
+.filtros {
+    width: 250px;
+}
+
+.busqueda {
+    width: 200px;
+}
