@@ -15,9 +15,17 @@ table {
 /*seccion de estilo para listado de solucitudes*/
 
 .filtros {
-    width: 250px;
+    max-width: auto;
+    margin-bottom: 20px;
 }
 
-.busqueda {
-    width: 200px;
+.fondoFiltro {
+    background-color: rgb(32, 79, 54);
+    padding-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.fondoTabla {
+    background-color: green;
 }

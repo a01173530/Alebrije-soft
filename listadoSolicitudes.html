@@ -19,7 +19,7 @@
         <h1 class="mb-3"> Listado de Solucitudes</h1>
 
         <!--filtros-->
-        <div class="row bg-dark p-4">
+        <div class="row fondoFiltro ">
             <div class="col-md-4">
                 <select id="inputState" class="form-control filtros">
                     <option selected>Filtro por colabolrador</option>
@@ -40,44 +40,130 @@
                 </select>
             </div>
             <div class="col-md-4">
-                <input class="form-control mr-0 busqueda" type="search" placeholder="Buscar" aria-label="Search">
-                <button type="button" class="btn btn-success">Buscar</button>
+                <div class=" input-group-prepend filtros" role="group" aria-label="Basic example">
+                    <input class="form-control" type="search" placeholder="Buscar" aria-label="Search">
+                    <button type="button" class="btn btn-success">Buscar</button>
+                </div>
+
             </div>
 
-            
+
+        </div>
+        <div class="d-sm-none d-md-block">
+            <div class="row bg-light text-center">
+                <div class="col-md-3">
+                    <label> Colaborador</label>
+                </div>
+                <div class="col-md-5">
+                    <label> Resumen de cambios propuestos</label>
+                </div>
+                <div class="col-md-2">
+                    <label> Detalles</label>
+                </div>
+                <div class="col-md-2">
+                    <label>Realizar cambios</label>
+                </div>
+            </div>
         </div>
 
-        <div class="row bg-light">
-            <!--columna info de colaborador-->
-            <div class="col">
-                <h2>nombre del colabolrador</h2>
+        <div class="row mb-3">
+            <div class="col-md-3 align-self-center text-center mb-1">
+                <label> Julio Ramirez</label>
             </div>
-            <!--columna info de cambios-->
-            <div class="col">
-                <p>Aqui se muestran los cambios de las solicitudes</p>
+            <div class="col-md-5 text-center mb-3">
+                <label> (+2 lotes de plantulas de especie 4)</label>
+                <label>(Lo agrege al invernadero 2 y no al 1)</label>
             </div>
-            <!--columna boton-->
-            <div class="col">
-                <a href="#" class="btn btn-info" role="button">Vista Destallada</a>
+            <div class="col-md-2 align-self-center text-center mb-3">
+                <a href="#" class="btn btn-info" role="button">Más información</a>
             </div>
-            <!--columna checkboxes-->
-            <div class="col">
-                <div>    
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
-                        Check me out
-                    </label>
+            <div class="col-md-2 align-self-center text-center">
+                <div>
+                    <input type="radio" aria-label="Radio button for following text input">
+                    <label> Aceptar</label>
                 </div>
                 <div>
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
-                        Check me out
-                    </label>
+                    <input type="radio" aria-label="Radio button for following text input">
+                    <label> Rechazar</label>
                 </div>
-            </div>
+            </div>   
         </div>
 
+        <div class="row bg-light mb-3">
+            <div class="col-md-3 align-self-center text-center mb-1">
+                <label> Julio Ramirez</label>
+            </div>
+            <div class="col-md-5 text-center mb-3">
+                <label> (+2 lotes de plantulas de especie 4)</label>
+                <label>(Lo agrege al invernadero 2 y no al 1)</label>
+            </div>
+            <div class="col-md-2 align-self-center text-center mb-3">
+                <a href="#" class="btn btn-info" role="button">Más información</a>
+            </div>
+            <div class="col-md-2 align-self-center text-center">
+                <div>
+                    <input type="radio" aria-label="Radio button for following text input">
+                    <label> Aceptar</label>
+                </div>
+                <div>
+                    <input type="radio" aria-label="Radio button for following text input">
+                    <label> Rechazar</label>
+                </div>
+            </div>   
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-3 align-self-center text-center mb-1">
+                <label> Julio Ramirez</label>
+            </div>
+            <div class="col-md-5 text-center mb-3">
+                <label> (+2 lotes de plantulas de especie 4)</label>
+                <label>(Lo agrege al invernadero 2 y no al 1)</label>
+            </div>
+            <div class="col-md-2 align-self-center text-center mb-3">
+                <a href="#" class="btn btn-info" role="button">Más información</a>
+            </div>
+            <div class="col-md-2 align-self-center text-center">
+                <div>
+                    <input type="radio" aria-label="Radio button for following text input">
+                    <label> Aceptar</label>
+                </div>
+                <div>
+                    <input type="radio" aria-label="Radio button for following text input">
+                    <label> Rechazar</label>
+                </div>
+            </div>   
+        </div>
+
+        <div class="row bg-light mb-3">
+            <div class="col-md-3 align-self-center text-center mb-1">
+                <label> Julio Ramirez</label>
+            </div>
+            <div class="col-md-5 text-center mb-3">
+                <label> (+2 lotes de plantulas de especie 4)</label>
+                <label>(Lo agrege al invernadero 2 y no al 1)</label>
+            </div>
+            <div class="col-md-2 align-self-center text-center mb-3">
+                <a href="#" class="btn btn-info" role="button">Más información</a>
+            </div>
+            <div class="col-md-2 align-self-center text-center">
+                <div>
+                    <input type="radio" aria-label="Radio button for following text input">
+                    <label> Aceptar</label>
+                </div>
+                <div>
+                    <input type="radio" aria-label="Radio button for following text input">
+                    <label> Rechazar</label>
+                </div>
+            </div>   
+        </div>
+
+        <div class="d-flex justify-content-lg-end justify-content-sm-center">
+            <button type="submit" class="btn btn-secondary mt-2" >Cancelar</button>
+            <button type="submit" class="btn btn-primary mt-2 ml-1">Aceptar</button>
+        </div>
     </div>
+
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
