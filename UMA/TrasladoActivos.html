@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <!-- mi css-->
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/navstyles.css">
+    <title>Traslado Activos</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+        <a class="navbar-brand" href="paginaPrincipal.html">
+        <img class="imgNav" src="img/LOGO_DSI.svg" alt="LogoDSI">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="paginaPrincipal.html">Inventarios</a>
+                </li>
+                <!--<li class="nav-item">
+                    <a class="nav-link" href="panelAdministrativo.html">Panel Administrativo</a>
+                </li>-->
+            </ul>
+        </div>        
+        <div >
+        <a class="btn btn-outline-success btn-lg" role="button" href="logIn.html"> Cerrar Sesión</a>
+        </div>
+    </nav>
+    <div class="row">
+    <div class="col-2"  id="contentside">
+      <div class="sidebar">
+       <a href="registrarPersonal.html">Registrar Personal</a>
+       <a href="registrarZona.html">Registrar Zona</a>
+       <a href="registrarEspecie.html">Registrar Especie</a>
+       
+    </div>
+    </div>
+    <div class="col-10">
+        <br>
+
+        <h1 class="text-center">Traslado de Activos </h1>
+        <div class="col-11">
+        <div class="container">
+        <br>
+        <br>
+        <div class="row">
+            <div class="col justify-content-center">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <fieldset disabled>
+                                <label for="disabledTextInput">Inventario Origen</label>
+                                <input type="text" id="disabledTextInput" class="form-control" placeholder="Semillas">
+                            </fieldset>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputState">Inventario destino</label>
+                            <select id="inputState" class="form-control">
+                                <option selected>Plantulas</option>
+                                <option>Plantas</option>
+                                <option>Plantas Madre</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputState">Razón de traslado</label>
+                            <select id="inputState" class="form-control">
+                                <option selected>Venta</option>
+                                <option>Traslado a plántulas</option>
+                                <option>Traslado a plantas</option>
+                                <option>Traslado de plantas madres</option>
+                                <option>Donación recibida </option>
+                                <option>Donación enviada</option>
+                                <option>Compra</option>
+                                <option>Colecta</option>
+                                <option>Muerte</option>
+                                <option>Robo</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <fieldset disabled>
+                                <label for="disabledTextInput">Fecha de traslado</label>
+                                <input type="text" id="disabledTextInput" class="form-control" placeholder="20/08/2020">
+                            </fieldset>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputState">Nombre científico</label>
+                            <select id="inputState" class="form-control">
+                                <option selected>Echynocatus platyacantus</option>
+                                <option>Dasylirion acrotrichum</option>
+                                <option>Astrophytum ornatum</option>
+                                <option>Cephalocereus senilis</option>
+                                <option>Ferocactus histrix</option>
+                                <option>Mammillaria hahniana</option>
+                                <option>Mammillaria herrerae</option>
+                                <option>Mammillaria longimamma</option>
+                                <option>Mammillaria nana</option>
+                                <option>Mammillaria parkinsonii</option>
+                                <option>Mammillaria schiedeana</option>
+                                <option>Mammillaria schwarzii</option>
+                                <option>Mammillaria zeilmanniana</option>
+                                <option>Mammillaria zephyranthoides</option>
+                                <option>Stenocactus coptogonus</option>
+                                <option>Strombocactus disciformis</option>
+                                <option>Echynocatus grusonii</option>
+                                <option>Ferocactus pilosus</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="disabledTextInput">Ejemplares a trasladar</label>
+                            <input type="text" id="disabledTextInput" class="form-control"
+                                placeholder="Introduce un numero">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <fieldset disabled>
+                                <label for="disabledTextInput">Zona de origen</label>
+                                <input type="text" id="disabledTextInput" class="form-control" placeholder="Inventario">
+                            </fieldset>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputState">Zona destino</label>
+                            <select id="inputState" class="form-control">
+                                <option selected>INVERNADERO</option>
+                                <option>MALLA SOMBRA</option>
+                                <option>JARDIN XENÓFILO 1 </option>
+                                <option>JARDIN XENÓFILO 2 </option>
+                                <option>JARDIN XENÓFILO 3</option>
+                                <option>ZONA SIEMBRA</option>
+                                <option>INTENSIVA</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <fieldset disabled>
+                                <label for="disabledTextInput">Número de ejemplares</label>
+                                <input type="text" id="disabledTextInput" class="form-control"
+                                    placeholder="0011 - 0061">
+                            </fieldset>
+
+                        </div>
+                    </div>
+                    <div >
+                        <button type="submit" class="btn btn-secondary">Cancelar</button>
+                        <a class="btn btn-primary" href="TrasladoActivos.html">Trasladar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
