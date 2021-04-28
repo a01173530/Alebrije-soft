@@ -1,0 +1,87 @@
+
+const Zona = require('../models/zona');
+
+exports.getNuevaZona=(request, response, next) => {
+
+	response.render('form_zonas');
+
+}
+
+exports.postNuevaZona=(request, response, next) => {
+   console.log(request.body);
+   const zona = new Zona(request.body.nombreZona);
+   zona.save()
+      .then(() => {
+        request.session.ultima_persona = request.body.nombreZona;
+        response.redirect('/zonas');
+      }).catch( err => {
+           console.log(err);
+           response.redirect('/zonas/zonas');    
+      });
+}
+
+exports.get=(request, response, next) => {
+	response.setHeader('Set-Cookie', 'persona_cookie=Esto es para segiuir al personal; HttpOnly');
+	console.log(request.cookies.persona_cookie);
+
+	Zona.fetchAll()
+          .then(([rows, fieldData]) => {
+             console.log(rows);
+
+             response.render('zona', {
+              zonas: rows,
+              ultima_persona: request.session.ultima_persona === undefined ? "No se ha registrado a nadie" : request.session.ultima_persona
+            });
+          })
+          .catch(err => {
+                 console.log(err);
+          });
+
+
+    
+}
+
+exports.getezona=(request, response, next) => {
+  const zonaID = request.params.zonaID;
+
+  Persona.fetchOne()
+          .then(([rows, fieldData]) => {
+             console.log(rows);
+
+             response.render('zona', {
+              zona: rows,
+              ultima_persona: request.session.ultima_persona === undefined ? "No se ha registrado a nadie" : request.session.ultima_persona
+            });
+          })
+          .catch(err => {
+                 console.log(err);
+          });
+
+
+    
+}
+
+
+exports.postZona = (request, response, next) => {
+
+    console.log("Petición asíncrona reciba");
+    console.log(request.body);
+    console.log(request.body.zonaID);
+    
+
+    Especie.delete(request.body.zonaID)
+        .then(() => {
+             Especie.fetchAll()
+                .then(([rows, fieldData]) => {
+                    return response.status(200).json({zonas: rows});
+                })
+                .catch(err => {
+                    console.log(err)
+                });
+            //return response.status(200).json({message: "Especie eliminada"});
+        }).catch((err) => {
+            console.log(err);
+            return response.status(500).json({message: "Internal Server Error"});
+        });
+    //response.status(200).json({message: "Respuesta asíncrona"});
+}

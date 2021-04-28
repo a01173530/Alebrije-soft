@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const rutasRoot = require('./routes/root');
 const rutasEspecies = require('./routes/especies');
+const rutasZonas = require('./routes/zonas');
 const rutasUsuarios = require('./routes/usuarios');
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -31,6 +32,7 @@ app.use((request, response, next) => {
 });
 
 app.use('/especies', rutasEspecies);
+app.use('/zonas', rutasZonas);
 app.use('/usuarios', rutasUsuarios);
 
 

@@ -21,7 +21,7 @@ exports.postNewUser = (request, response, next) => {
     usuario.save()
         .then(() => {
             request.session.ultima_persona = request.body.nombre;
-            response.redirect('/especies');
+            response.redirect('/');
         }).catch( err => {
             console.log(err)
             request.session.error = "Ingresa otro nombre de usuario";

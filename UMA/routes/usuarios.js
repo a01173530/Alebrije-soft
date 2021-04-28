@@ -6,9 +6,9 @@ const isAuth = require('../util/is-auth');
 
 router.get('/Logout', usuariosController.logout);
 
-router.get('/new', isAuth, usuariosController.getNewUser);
+router.get('/new', /* isAuth,*/ usuariosController.getNewUser);
 
-router.post('/new',  isAuth,usuariosController.postNewUser);
+router.post('/new', /* isAuth,*/ usuariosController.postNewUser);
 
 router.get('/login', usuariosController.getLogin);
 
