@@ -21,7 +21,7 @@ exports.postNewUser = (request, response, next) => {
     usuario.save()
         .then(() => {
             request.session.ultima_persona = request.body.nombre;
-            response.redirect('/Escribe');
+            response.redirect('/especies');
         }).catch( err => {
             console.log(err)
             request.session.error = "Ingresa otro nombre de usuario";
@@ -51,7 +51,7 @@ exports.postLogin = (request, response, next) => {
                         request.session.isLoggedIn = true;
                         request.session.user = rows[0].correo;
                         return request.session.save(err => {
-                            response.redirect('/Escribe');
+                            response.redirect('/especies');
                         });
                     }
                     request.session.error ='Usuario y/o contraseña incorrectos';

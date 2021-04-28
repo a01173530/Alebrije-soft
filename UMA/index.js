@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-
+const rutasEspecies = require('./routes/especies');
 const rutasUsuarios = require('./routes/usuarios');
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -29,9 +29,8 @@ app.use((request, response, next) => {
     next(); //Le permite a la petición avanzar hacia el siguiente middleware
 });
 
-app.use('/Escribe', misRutas);
+app.use('/especies', rutasEspecies);
 app.use('/usuarios', rutasUsuarios);
-
 
 
 app.get('/', (request, response, next) => {
