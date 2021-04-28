@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const rutasRoot = require('./routes/root');
 const rutasEspecies = require('./routes/especies');
 const rutasUsuarios = require('./routes/usuarios');
 
@@ -33,11 +34,7 @@ app.use('/especies', rutasEspecies);
 app.use('/usuarios', rutasUsuarios);
 
 
-app.get('/', (request, response, next) => {
-    //response.send('Respuesta de la ruta "/Cisco"');
-	response.send('<html><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Lab12</title></head><body><h1>Lab 12</h1><ul><li><a href="/Escribe/">Personal</a></li><li><a href="/Holamundo">Hola mundo</a></li><li><a href="/Cisco">Cisco</a></li></ul></body></html>');
-
-});
+app.use('/',rutasRoot);
 
 app.use((request, response, next) => {
 	console.log('Error 404');

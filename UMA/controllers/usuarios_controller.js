@@ -31,9 +31,10 @@ exports.postNewUser = (request, response, next) => {
  };
 
 
+
 exports.getLogin = (request, response, next) => {
     response.render('login', {  
-        error: request.session.error === undefined ? false : request.session.error, 
+        error: request.session.error === undefined ? false : request.session.error , 
         titulo: "UMA",
     });
 };
@@ -51,7 +52,7 @@ exports.postLogin = (request, response, next) => {
                         request.session.isLoggedIn = true;
                         request.session.user = rows[0].correo;
                         return request.session.save(err => {
-                            response.redirect('/especies');
+                            response.redirect('/');
                         });
                     }
                     request.session.error ='Usuario y/o contraseña incorrectos';

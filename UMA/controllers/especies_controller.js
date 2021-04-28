@@ -29,7 +29,7 @@ exports.get=(request, response, next) => {
              console.log(rows);
 
              response.render('index', {
-              personas: rows,
+              especies: rows,
               ultima_persona: request.session.ultima_persona === undefined ? "No se ha registrado a nadie" : request.session.ultima_persona
             });
           })
@@ -49,7 +49,7 @@ exports.getespecie=(request, response, next) => {
              console.log(rows);
 
              response.render('index', {
-              personas: rows,
+              especies: rows,
               ultima_persona: request.session.ultima_persona === undefined ? "No se ha registrado a nadie" : request.session.ultima_persona
             });
           })

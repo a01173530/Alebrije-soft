@@ -14,4 +14,6 @@ router.get('/login', usuariosController.getLogin);
 
 router.post('/login', usuariosController.postLogin);
 
+//router.get('/',  isAuth, usuariosController.get);
+
 module.exports = router;

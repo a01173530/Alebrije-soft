@@ -1,10 +1,9 @@
 <%- include('includes/header.ejs') %>
 
   <div class="container">
-    <h1><%= titulo %></h1>
     <br>
 	<% if (error !== false) { %>
-		 <div class="alert alert-warning alert-dismissible fade show" role="alert">
+		 <div class="alert alert-danger alert-dismissible fade show" role="alert">
          <strong> <%- error %>
          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
          <span aria-hidden="true">&times;</span>
@@ -12,6 +11,7 @@
          </div>  
           
      <% } %> 
+     <h1><%= titulo %></h1>
 
     <div class="mx-auto" style="width: 500px;">
       <div class="card" style="width: 30rem;">
@@ -27,7 +27,6 @@
                 <label for="contrasena">Contraseña</label>
                 <input type="password" class="form-control"  name="contrasena" placeholder="Contraseña" required>
               </div>
-              <br>
               <br>
               <input type="submit" name="enviar" value="Iniciar Sesión" class="btn btn-primary">
             </form>
