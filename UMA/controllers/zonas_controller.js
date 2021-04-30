@@ -69,16 +69,16 @@ exports.postZona = (request, response, next) => {
     console.log(request.body.zonaID);
     
 
-    Especie.delete(request.body.zonaID)
+    Zona.delete(request.body.zonaID)
         .then(() => {
-             Especie.fetchAll()
+             Zona.fetchAll()
                 .then(([rows, fieldData]) => {
                     return response.status(200).json({zonas: rows});
                 })
                 .catch(err => {
                     console.log(err)
                 });
-            //return response.status(200).json({message: "Especie eliminada"});
+            //return response.status(200).json({message: "Zona eliminada"});
         }).catch((err) => {
             console.log(err);
             return response.status(500).json({message: "Internal Server Error"});
