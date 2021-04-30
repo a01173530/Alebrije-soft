@@ -20,6 +20,10 @@ app.use(session({
 }));
 
 const path = require('path');
+const csrf = require('csurf');
+const csrfProtection = csrf();
+
+const csrfMiddleware = require('./util/csrf');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
@@ -30,6 +34,9 @@ app.use((request, response, next) => {
     console.log('Middleware!');
     next(); //Le permite a la petición avanzar hacia el siguiente middleware
 });
+
+app.use(csrfProtection); 
+app.use(csrfMiddleware);
 
 app.use('/especies', rutasEspecies);
 app.use('/zonas', rutasZonas);
