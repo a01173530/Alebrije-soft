@@ -44,7 +44,7 @@ exports.get=(request, response, next) => {
 exports.getezona=(request, response, next) => {
   const zonaID = request.params.zonaID;
 
-  Persona.fetchOne()
+  Zona.fetchOne()
           .then(([rows, fieldData]) => {
              console.log(rows);
 
