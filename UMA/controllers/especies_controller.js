@@ -85,3 +85,18 @@ exports.postEspecie = (request, response, next) => {
         });
     //response.status(200).json({message: "Respuesta asíncrona"});
 }
+
+exports.postBuscar =  (request, response, next) => {
+
+    console.log("Petición asíncrona reciba");
+    console.log(request.body.criterio);
+
+    Especie.fetch(request.body.criterio)
+        .then(([rows, fieldData]) => {
+            return response.status(200).json({especies: rows});
+        })
+        .catch(err => {
+            console.log(err)
+        });
+        
+ }

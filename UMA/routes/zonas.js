@@ -15,5 +15,7 @@ router.get('/',  isAuth, zonasController.get);
 
 router.post('/eliminar', isAuth, zonasController.postZona);
 
+router.post('/buscar', isAuth, zonasController.postBuscar);
+
 
 module.exports = router;

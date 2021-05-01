@@ -34,4 +34,8 @@ module.exports = class Zona {
         return db.execute('DELETE FROM zonas WHERE zonaID = ?', [zonaID]);
     }
 
+    static fetch(criterio) {
+        return db.execute('SELECT * FROM zonas WHERE zonaID LIKE ? OR nombreZona LIKE ?' , ['%'+criterio+'%','%'+criterio+'%']);
+    }
+
 }

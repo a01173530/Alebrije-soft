@@ -85,3 +85,18 @@ exports.postZona = (request, response, next) => {
         });
     //response.status(200).json({message: "Respuesta asíncrona"});
 }
+
+exports.postBuscar =  (request, response, next) => {
+
+    console.log("Petición asíncrona reciba");
+    console.log(request.body.criterio);
+
+    Zona.fetch(request.body.criterio)
+        .then(([rows, fieldData]) => {
+            return response.status(200).json({zonas: rows});
+        })
+        .catch(err => {
+            console.log(err)
+        });
+        
+ }

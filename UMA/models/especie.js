@@ -34,4 +34,8 @@ module.exports = class Especie {
         return db.execute('DELETE FROM Especie WHERE EspID = ?', [EspID]);
     }
 
+    static fetch(criterio) {
+        return db.execute('SELECT * FROM Especie WHERE EspID LIKE ? OR NombreEsp LIKE ?' , ['%'+criterio+'%','%'+criterio+'%']);
+    }
+
 }

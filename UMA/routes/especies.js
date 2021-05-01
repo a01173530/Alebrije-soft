@@ -15,5 +15,7 @@ router.get('/',  isAuth, especiesController.get);
 
 router.post('/eliminar',isAuth, especiesController.postEspecie);
 
+router.post('/buscar', isAuth, especiesController.postBuscar);
+
 
 module.exports = router;
