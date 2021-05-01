@@ -19,6 +19,8 @@ app.use(session({
     saveUninitialized: false, //Asegura que no se guarde una sesión para una petición que no lo necesita
 }));
 
+const multer = require('multer');
+
 const path = require('path');
 const csrf = require('csurf');
 const csrfProtection = csrf();
