@@ -1,3 +1,4 @@
+		<input type="hidden" id="_csrf" name="_csrf" value="<%= csrfToken %>" >
 		<div class="table-responsive" id="lista_especie">
 			<table class="table table-hover table-condensed table-bordered" >
 				  <thead class="bg-success">
@@ -27,7 +28,7 @@
 <script>
    const eliminar = (EspID) => {
         //El token de protección CSRF
-        //const csrf = document.getElementById('_csrf').value;
+        const csrf = document.getElementById('_csrf').value;
 
         
         let data = {EspID: EspID};
@@ -36,8 +37,8 @@
         fetch('/especies/eliminar', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
-              //  'csrf-token': csrf
+                'Content-Type': 'application/json',
+                'csrf-token': csrf
             },
             body: JSON.stringify(data)
         }).then(result => {

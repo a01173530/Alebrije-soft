@@ -13,7 +13,7 @@ router.post('/zonas',  isAuth, zonasController.postNuevaZona);
 router.get('/',  isAuth, zonasController.get);
 
 
-router.post('/eliminar', zonasController.postZona);
+router.post('/eliminar', isAuth, zonasController.postZona);
 
 
 module.exports = router;

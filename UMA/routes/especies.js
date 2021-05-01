@@ -13,7 +13,7 @@ router.post('/especies',  isAuth, especiesController.postNuevaEspecie);
 router.get('/',  isAuth, especiesController.get);
 
 
-router.post('/eliminar', especiesController.postEspecie);
+router.post('/eliminar',isAuth, especiesController.postEspecie);
 
 
 module.exports = router;

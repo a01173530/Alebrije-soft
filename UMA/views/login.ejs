@@ -20,6 +20,7 @@
           <h5 class="card-title">Inicia Sesión</h5>
           <p class="card-text">
             <form action="login" method="POST">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
               <div class="form-group">
                 <label for="correo">Correo electronico</label>
                 <input type="email" class="form-control"  placeholder="Correo electronico" name="correo" required>

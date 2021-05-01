@@ -14,6 +14,7 @@
         <h1><%= titulo %></h1>
 		<br>
 		<form action="new" method="POST">
+		<input type="hidden" name="_csrf" value="<%= csrfToken %>" >
 		<label for="Nombre">Nombre completo</label>
 		<br>
 		<input type="text" name="nombre" class="form-control" required>
