@@ -8,5 +8,6 @@ router.get('/semillas',  isAuth, inventariosController.getSemillas);
 
 router.get('/agregar',  isAuth, inventariosController.getAgregar);
 
+router.post('/agregar',  isAuth, inventariosController.postAgregar);
 
 module.exports = router;
