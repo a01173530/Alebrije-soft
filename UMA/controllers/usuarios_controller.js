@@ -44,7 +44,7 @@ exports.postLogin = (request, response, next) => {
 
     Usuario.fetchOne(request.body.correo)
         .then(([rows, fieldData]) => {
-            console.log(rows[0].contrasena);
+            console.log(rows[0]);
             
             bcrypt.compare(request.body.contrasena, rows[0].contrasena)
                 .then(doMatch => {

@@ -7,6 +7,7 @@ const rutasRoot = require('./routes/root');
 const rutasEspecies = require('./routes/especies');
 const rutasZonas = require('./routes/zonas');
 const rutasUsuarios = require('./routes/usuarios');
+const rutasInventarios = require('./routes/inventarios');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -19,8 +20,7 @@ app.use(session({
     saveUninitialized: false, //Asegura que no se guarde una sesión para una petición que no lo necesita
 }));
 
-const multer = require('multer');
-
+//const multer = require('multer');
 const path = require('path');
 const csrf = require('csurf');
 const csrfProtection = csrf();
@@ -43,7 +43,7 @@ app.use(csrfMiddleware);
 app.use('/especies', rutasEspecies);
 app.use('/zonas', rutasZonas);
 app.use('/usuarios', rutasUsuarios);
-
+app.use('/inventarios', rutasInventarios);
 
 app.use('/',rutasRoot);
 

@@ -28,7 +28,7 @@ exports.get=(request, response, next) => {
           .then(([rows, fieldData]) => {
              console.log(rows);
 
-             response.render('index', {
+             response.render('registrarEspecie', {
               especies: rows,
               ultima_persona: request.session.ultima_persona === undefined ? "No se ha registrado a nadie" : request.session.ultima_persona
             });
@@ -48,7 +48,7 @@ exports.getespecie=(request, response, next) => {
           .then(([rows, fieldData]) => {
              console.log(rows);
 
-             response.render('index', {
+             response.render('registrarEspecie', {
               especies: rows,
               ultima_persona: request.session.ultima_persona === undefined ? "No se ha registrado a nadie" : request.session.ultima_persona
             });
