@@ -14,7 +14,7 @@
         </div>
         <div class="col-xl-4">
             <h4>
-                Inventario de Semillas
+                <%=titulo%>
             </h4>
         </div>
         <div class="col-xl-4">
@@ -82,17 +82,7 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr class="text-center">
-                                <th scope="row"><a href="detalladoRegistro.html">1</a></th>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                                <td>X</td>
-                              </tr>
-                              
+                                <%- include('includes/tabla_inventario.ejs') %>
                             </tbody>
                           </table>
                   </div>

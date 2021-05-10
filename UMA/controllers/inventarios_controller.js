@@ -1,7 +1,14 @@
 const Planta = require('../models/planta');
 exports.getSemillas=(request, response, next) => {
 
-	response.render('inventario');
+	response.render('inventario',{titulo:'Inventario Semilla'});
+
+
+}
+
+exports.getPlantasMadre=(request, response, next) => {
+
+	response.render('inventario',{titulo:'Inventario Plantas Madre'});
 
 }
 
@@ -24,3 +31,6 @@ exports.postAgregar=(request, response, next) => {
 			response.redirect('/');
 		});
 }
+
+
+

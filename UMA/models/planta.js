@@ -27,5 +27,14 @@ module.exports = class Planta {
         }).catch(err => {
             console.log(err);
         });
-    }
-}
+    } //save 
+
+    static fetchPlantasMadre(){
+
+        return db.execute('SELECT *FROM bitacora');
+
+    }   
+
+    
+}//planta
+

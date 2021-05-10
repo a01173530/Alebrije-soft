@@ -6,6 +6,8 @@ const isAuth = require('../util/is-auth');
 
 router.get('/semillas',  isAuth, inventariosController.getSemillas);
 
+router.get('/plantas-madre',  isAuth, inventariosController.getPlantasMadre);
+
 router.get('/agregar',  isAuth, inventariosController.getAgregar);
 
 router.post('/agregar',  isAuth, inventariosController.postAgregar);
