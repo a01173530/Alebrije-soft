@@ -1,4 +1,7 @@
 const Planta = require('../models/planta');
+const Especie = require('../models/especie');
+const Zona = require('../models/zona');
+
 exports.getSemillas=(request, response, next) => {
 
 	response.render('inventario',{titulo:'Inventario Semilla'});
@@ -15,7 +18,21 @@ exports.getPlantasMadre=(request, response, next) => {
 
 exports.getAgregar=(request, response, next) => {
 
-	response.render('registrarPlanta');
+	Especie.fetchAll()
+          .then(([especies, fieldData]) => {
+			  Zona.fetchAll()
+				.then(([zonas, fieldData]) => {
+					response.render('registrarPlanta', {
+						zonas: zonas,
+						especies: especies
+					});
+				}).catch(err => {
+					console.log(err);
+				});
+          })
+          .catch(err => {
+                 console.log(err);
+          });
 
 }
 

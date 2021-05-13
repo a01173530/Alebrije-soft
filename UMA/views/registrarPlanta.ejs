@@ -64,24 +64,9 @@
                         <div class="form-group col-md-4">
                             <label for="inputState">Nombre científico</label>
                             <select id="inputState" class="form-control" name="especie">
-                                <option selected value="1">Echynocatus platyacantus</option>
-                                <option value="2">Dasylirion acrotrichum</option>
-                                <option value="3">Astrophytum ornatum</option>
-                                <option value="4">Cephalocereus senilis</option>
-                                <option value="5">Ferocactus histrix</option>
-                                <option value="6">Mammillaria hahniana</option>
-                                <option value="7">Mammillaria herrerae</option>
-                                <option value="8">Mammillaria longimamma</option>
-                                <option value="9">Mammillaria nana</option>
-                                <option value="10">Mammillaria parkinsonii</option>
-                                <option value="11">Mammillaria schiedeana</option>
-                                <option value="12">Mammillaria schwarzii</option>
-                                <option value="13">Mammillaria zeilmanniana</option>
-                                <option value="14">Mammillaria zephyranthoides</option>
-                                <option value="15">Stenocactus coptogonus</option>
-                                <option value="16">Strombocactus disciformis</option>
-                                <option value="17">Echynocatus grusonii</option>
-                                <option value="18">Ferocactus pilosus</option>
+                                <%for(let especie of especies) {%>
+                                    <option value="<%= especie.EspID %>"><%= especie.NombreEsp %></option>
+                                <%}%>
                             </select>
                         </div>
                         <div class="form-group col-md-4">
@@ -100,13 +85,9 @@
                         <div class="form-group col-md-4">
                             <label for="inputState">Zona destino</label>
                             <select id="inputState" class="form-control" name="zona">
-                                <option selected value="1">INVERNADERO</option>
-                                <option value="2">INVERNADERO 2</option>
-                                <option value="3">MALLA SOMBRA</option>
-                                <option value="5">JARDIN XENÓFILO 1 </option>
-                                <option value="5">JARDIN XENÓFILO 2 </option>
-                                <option value="6">JARDIN XENÓFILO 3</option>
-                                <option value="7">ZONA SIEMBRA INTENSIVA</option>
+                                <%for(let zona of zonas) {%>
+                                <option value="<%= zona.zonaID %>"><%= zona.nombreZona %></option>
+                                <%}%>
                             </select>
                         </div>
                         <div class="form-group col-md-4">

@@ -31,7 +31,7 @@ module.exports = class Planta {
 
     static fetchPlantasMadre(){
 
-        return db.execute('SELECT *FROM bitacora');
+        return db.execute('SELECT * FROM bitacora');
 
     }   
 
