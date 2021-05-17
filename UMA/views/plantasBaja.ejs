@@ -1,0 +1,77 @@
+<%- include('includes/header.ejs') %>
+<%- include('includes/navbar.ejs') %>
+	<%- include('includes/sidebar.ejs') %>
+    <div class="col-11">
+        <h1>Dar de Baja Plantas</h1>
+    <div class="container">
+
+
+        <br>
+        <br>
+
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputState">Seleccion</label>
+                    <select id="inputState" class="form-control">
+                        <option selected>Echynocatus platyacantus</option>
+                        <option>Dasylirion acrotrichum</option>
+                        <option>Astrophytum ornatum</option>
+                        <option>Cephalocereus senilis</option>
+                        <option>Ferocactus histrix</option>
+                        <option>Mammillaria hahniana</option>
+                        <option>Mammillaria herrerae</option>
+                        <option>Mammillaria longimamma</option>
+                        <option>Mammillaria nana</option>
+                        <option>Mammillaria parkinsonii</option>
+                        <option>Mammillaria schiedeana</option>
+                        <option>Mammillaria schwarzii</option>
+                        <option>Mammillaria zeilmanniana</option>
+                        <option>Mammillaria zephyranthoides</option>
+                        <option>Stenocactus coptogonus</option>
+                        <option>Strombocactus disciformis</option>
+                        <option>Echynocatus grusonii</option>
+                        <option>Ferocactus pilosus</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputState">Etapa</label>
+                    <select id="inputState" class="form-control">
+                        <option>Plantas</option>
+                        <option>Plantas Madre</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputState">Zona</label>
+                    <select id="inputState" class="form-control">
+                        <option>JARDIN XENÓFILO 1 </option>
+                        <option>JARDIN XENÓFILO 2 </option>
+                        <option>JARDIN XENÓFILO 3</option>
+                        <option>MALLA SOMBRA</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputState">Razón de baja</label>
+                            <select id="inputState" class="form-control">
+                                <option selected>Muerte</option>
+                                <option>Donacion otorgada</option>
+                                <option>Venta</option>
+                            </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="disabledTextInput"> Cantidad</label>
+                    <input type="text" id="disabledTextInput" class="form-control"
+                        placeholder="Introduce un numero">
+                </div>
+            </div>
+            <br>
+            <div >
+                <a class="btn btn-secondary" href="/">Cancelar</a>
+                <button class="btn btn-danger" onclick="">Baja</button>
+            </div>
+        </form>
+
+	<%- include('includes/endcontainer.ejs') %>
+<%- include('includes/footer.ejs') %>

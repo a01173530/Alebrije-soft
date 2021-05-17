@@ -49,5 +49,8 @@ exports.postAgregar=(request, response, next) => {
 		});
 }
 
+exports.getPlantas=(request, response, next) => {
 
+	response.render('plantasBaja');
+}
 

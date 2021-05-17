@@ -12,4 +12,6 @@ router.get('/agregar',  isAuth, inventariosController.getAgregar);
 
 router.post('/agregar',  isAuth, inventariosController.postAgregar);
 
+router.get('/plantas',  isAuth, inventariosController.getPlantas);
+
 module.exports = router;
