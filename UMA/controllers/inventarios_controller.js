@@ -71,3 +71,19 @@ exports.getPlantulasAlta=(request, response, next) => {
           });
 
 }
+
+exports.getPlantulasBaja=(request, response, next) => {
+
+	Especie.fetchAll()
+          .then(([especies, fieldData]) => {
+			  response.render('plantulasBaja', {
+				titulo:'Baja de plantula',
+				especies: especies
+			});
+				
+          })
+          .catch(err => {
+                 console.log(err);
+          });
+
+}

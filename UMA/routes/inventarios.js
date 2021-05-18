@@ -17,6 +17,7 @@ router.get('/plantas',  isAuth, inventariosController.getPlantas);
 
 router.get('/plantulas-alta',  isAuth, inventariosController.getPlantulasAlta);
 
+router.get('/plantulas-baja',  isAuth, inventariosController.getPlantulasBaja);
 
 
 
