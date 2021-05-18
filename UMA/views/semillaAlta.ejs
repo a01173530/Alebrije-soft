@@ -1,0 +1,62 @@
+<%- include('includes/header.ejs') %>
+<%- include('includes/navbar.ejs') %>
+	<%- include('includes/sidebar.ejs') %>
+    <div class="col-11">
+        <h1>Dar de Alta Semillas</h1>
+    <div class="container">
+
+
+        <br>
+        <br>
+
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputState">Seleccion</label>
+                    <select id="inputState" class="form-control">
+                        <option selected>Echynocatus platyacantus</option>
+                        <option>Dasylirion acrotrichum</option>
+                        <option>Astrophytum ornatum</option>
+                        <option>Cephalocereus senilis</option>
+                        <option>Ferocactus histrix</option>
+                        <option>Mammillaria hahniana</option>
+                        <option>Mammillaria herrerae</option>
+                        <option>Mammillaria longimamma</option>
+                        <option>Mammillaria nana</option>
+                        <option>Mammillaria parkinsonii</option>
+                        <option>Mammillaria schiedeana</option>
+                        <option>Mammillaria schwarzii</option>
+                        <option>Mammillaria zeilmanniana</option>
+                        <option>Mammillaria zephyranthoides</option>
+                        <option>Stenocactus coptogonus</option>
+                        <option>Strombocactus disciformis</option>
+                        <option>Echynocatus grusonii</option>
+                        <option>Ferocactus pilosus</option>
+                    </select>
+                </div>
+                
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputState">Origen de Semilla</label>
+                            <select id="inputState" class="form-control">
+                                <option selected>Colecta</option>
+                                <option>Donacion recibida</option>
+                                <option>Compra</option>
+                            </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="disabledTextInput"> Cantidad</label>
+                    <input type="text" id="disabledTextInput" class="form-control"
+                        placeholder="Introduce un numero">
+                </div>
+            </div>
+            <br>
+            <div >
+                <a class="btn btn-secondary" href="/">Cancelar</a>
+                <button class="btn btn-success" onclick="">Alta</button>
+            </div>
+        </form>
+
+	<%- include('includes/endcontainer.ejs') %>
+<%- include('includes/footer.ejs') %>
