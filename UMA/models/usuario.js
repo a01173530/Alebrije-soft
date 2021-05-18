@@ -36,9 +36,18 @@ module.exports = class Usuario {
         //return personas;
         
     }
+    
 
     static fetchOne(correo) {
         return db.execute('SELECT * FROM cuentas WHERE correo = ?', [correo]);
+    }
+
+    static delete(cuentaID) {
+        return db.execute('DELETE FROM cuentas WHERE cuentaID = ?', [cuentaID]);
+    }
+
+    static fetch(criterio) {
+        return db.execute('SELECT * FROM cuentas WHERE correo LIKE ? OR nombre LIKE ?' , ['%'+criterio+'%','%'+criterio+'%']);
     }
 
 }
