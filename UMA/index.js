@@ -8,7 +8,6 @@ const rutasEspecies = require('./routes/especies');
 const rutasZonas = require('./routes/zonas');
 const rutasUsuarios = require('./routes/usuarios');
 const rutasInventarios = require('./routes/inventarios');
-//const rutasPlantulas = require('./routes/plantulas');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -45,7 +44,6 @@ app.use('/especies', rutasEspecies);
 app.use('/zonas', rutasZonas);
 app.use('/usuarios', rutasUsuarios);
 app.use('/inventarios', rutasInventarios);
-//app.use('/plantulas', rutasPlantulas);
 
 app.use('/',rutasRoot);
 
