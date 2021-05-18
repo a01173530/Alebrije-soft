@@ -19,6 +19,10 @@ router.get('/plantulas-alta',  isAuth, inventariosController.getPlantulasAlta);
 
 router.get('/plantulas-baja',  isAuth, inventariosController.getPlantulasBaja);
 
+router.get('/semillas-alta',  isAuth, inventariosController.getSemillasAlta);
+
+router.get('/semillas-baja',  isAuth, inventariosController.getSemillasBaja);
+
 
 
 module.exports = router;
