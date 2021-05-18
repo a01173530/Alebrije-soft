@@ -10,6 +10,7 @@
         <br>
 
         <form>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="inputState">Nombre científico</label>
@@ -38,7 +39,7 @@
             <br>
             <div >
                 <a class="btn btn-secondary" href="/">Cancelar</a>
-                <button class="btn btn-success" onclick="">Alta</button>
+                <input type="submit" name="enviar"  class="btn btn-success" value="Registrar"> 
             </div>
         </form>
 
