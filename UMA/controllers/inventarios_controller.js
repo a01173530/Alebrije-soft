@@ -79,11 +79,12 @@ exports.getPlantasBaja=(request, response, next) => {
           });
 }
 
+
 exports.getSemillasAlta=(request, response, next) => {
 
 	Especie.fetchAll()
           .then(([especies, fieldData]) => {
-			  response.render('semillasAlta', {
+			  response.render('semillaAlta', {
 				titulo:'Alta de semillas',
 				especies: especies
 			});
@@ -94,11 +95,11 @@ exports.getSemillasAlta=(request, response, next) => {
           });
 }
 
-exports.getSemilasBaja=(request, response, next) => {
+exports.getSemillasBaja=(request, response, next) => {
 
 	Especie.fetchAll()
           .then(([especies, fieldData]) => {
-			  response.render('semillasBaja', {
+			  response.render('semillaBaja', {
 				titulo:'Baja de semillas',
 				especies: especies
 			});
