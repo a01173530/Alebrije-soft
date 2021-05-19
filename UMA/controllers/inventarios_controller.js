@@ -51,12 +51,32 @@ exports.postAgregar=(request, response, next) => {
 
 exports.getPlantasAlta=(request, response, next) => {
 
-	response.render('plantasAlta');
+	Especie.fetchAll()
+          .then(([especies, fieldData]) => {
+			  response.render('plantasAlta', {
+				titulo:'Alta de planta',
+				especies: especies
+			});
+				
+          })
+          .catch(err => {
+                 console.log(err);
+          });
 }
 
 exports.getPlantasBaja=(request, response, next) => {
 
-	response.render('plantasBaja');
+	Especie.fetchAll()
+          .then(([especies, fieldData]) => {
+			  response.render('plantasBaja', {
+				titulo:'Baja de planta',
+				especies: especies
+			});
+				
+          })
+          .catch(err => {
+                 console.log(err);
+          });
 }
 
 
@@ -73,7 +93,6 @@ exports.getPlantulasAlta=(request, response, next) => {
           .catch(err => {
                  console.log(err);
           });
-
 }
 
 exports.getPlantulasBaja=(request, response, next) => {
