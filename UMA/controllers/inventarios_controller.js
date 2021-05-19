@@ -79,6 +79,35 @@ exports.getPlantasBaja=(request, response, next) => {
           });
 }
 
+exports.getSemillasAlta=(request, response, next) => {
+
+	Especie.fetchAll()
+          .then(([especies, fieldData]) => {
+			  response.render('semillasAlta', {
+				titulo:'Alta de semillas',
+				especies: especies
+			});
+				
+          })
+          .catch(err => {
+                 console.log(err);
+          });
+}
+
+exports.getSemilasBaja=(request, response, next) => {
+
+	Especie.fetchAll()
+          .then(([especies, fieldData]) => {
+			  response.render('semillasBaja', {
+				titulo:'Baja de semillas',
+				especies: especies
+			});
+				
+          })
+          .catch(err => {
+                 console.log(err);
+          });
+}
 
 exports.getPlantulasAlta=(request, response, next) => {
 
