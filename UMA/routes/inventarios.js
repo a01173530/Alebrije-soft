@@ -12,7 +12,8 @@ router.get('/agregar',  isAuth, inventariosController.getAgregar);
 
 router.post('/agregar',  isAuth, inventariosController.postAgregar);
 
-router.get('/plantas',  isAuth, inventariosController.getPlantas);
+router.get('/plantasAlta',  isAuth, inventariosController.getPlantasAlta);
+router.get('/plantasBaja',  isAuth, inventariosController.getPlantasBaja);
 
 
 router.get('/plantulas-alta',  isAuth, inventariosController.getPlantulasAlta);

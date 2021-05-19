@@ -49,11 +49,15 @@ exports.postAgregar=(request, response, next) => {
 		});
 }
 
-exports.getPlantas=(request, response, next) => {
+exports.getPlantasAlta=(request, response, next) => {
+
+	response.render('plantasAlta');
+}
+
+exports.getPlantasBaja=(request, response, next) => {
 
 	response.render('plantasBaja');
 }
-
 
 
 exports.getPlantulasAlta=(request, response, next) => {
