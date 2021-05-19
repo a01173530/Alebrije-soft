@@ -1,7 +1,27 @@
 <%- include('includes/header.ejs') %>
 <%- include('includes/navbar.ejs') %>
 	<%- include('includes/sidebar.ejs') %>
-	   <%- include('includes/menu.ejs') %>
+	<input type="hidden" id="_csrf" name="_csrf" value="<%= csrfToken %>" >
+		
+	<div class="container">
+		<div class="row justify-content-around">
+			<%for (let tarjeta of tarjetas){%>
+				<div class="col-auto">
+					<div class="card border-success" style="width: 18rem;">
+						<img src="https://pbs.twimg.com/media/Ef05Dc-WkAEwhde.jpg" class="card-img-top" alt="...">
+						<div class="card-body text-success">
+							<h5 class="card-title"><%=tarjeta.NombreEsp%></h5>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item"># de Plantas Madre: <%=tarjeta.cantidadPlantasMadre%></li>
+								<li class="list-group-item"># de Plantas Reproducidas: <%=tarjeta.cantidadPlantasReproducidas%></li>
+								<!--<li class="list-group-item"># de lotes de Plantulas: <%=tarjeta.cantidadLotesDePlantulas%></li>-->
+							</ul>
+						</div>
+					</div>
+				</div>
+			<%}%>
+		</div>
+	</div>
 
 	<%- include('includes/endcontainer.ejs') %>
 <%- include('includes/footer.ejs') %>
