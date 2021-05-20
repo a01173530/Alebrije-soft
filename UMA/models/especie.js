@@ -4,7 +4,8 @@ const db = require('../util/database');
 module.exports = class Especie {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
-    constructor(NombreEsp) {
+    constructor(EspID,NombreEsp) {
+        this.EspID = EspID;
         this.NombreEsp = NombreEsp;
 
     }
@@ -12,8 +13,8 @@ module.exports = class Especie {
     //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
 
-      return db.execute('INSERT INTO Especie (NombreEsp) VALUES (?)',
-        [this.NombreEsp]
+      return db.execute('INSERT INTO Especie (EspID,NombreEsp) VALUES (?,?)',
+        [this.EspID, this.NombreEsp]
         );
         
     }
@@ -22,7 +23,7 @@ module.exports = class Especie {
     static fetchAll() {
         return db.execute('SELECT * FROM Especie')
           
-        //return personas;
+        //return personas;  ORDER BY `EspID` ASC
         
     }
 
