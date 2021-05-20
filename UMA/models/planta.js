@@ -29,14 +29,9 @@ module.exports = class Planta {
         });
     } //save 
 
-    static fetchCantidadPlantasMadre(){
-        return db.execute('SELECT NombreEsp, SUM(cantidad) as cantidadPlantasMadre FROM bitacora B, bitacora_etapa BE, especie E, etapa ET, registro_especie RE, traslado T WHERE B.bitacoraID = BE.bitacoraID AND BE.etapaID = ET.etapaID AND RE.bitacoraID = B.bitacoraID AND ET.etapaID = BE.etapaID AND B.trasladoID = T.trasladoID AND RE.EspID = E.EspID AND BE.etapaID = "MP" GROUP BY NombreEsp');
+    static fetchTarjetas(){
+        return db.execute('SELECT * FROM tarjetas');
     }
-
-    static fetchNPlantasReproducida(){
-        return db.execute('SELECT NombreEsp, nombreEtapa, razonTraslado, SUM(cantidad) as cantidadPlantasReproducidas FROM bitacora B, bitacora_etapa BE, especie E, etapa ET, registro_especie RE, traslado T WHERE B.bitacoraID = BE.bitacoraID AND BE.etapaID = ET.etapaID AND RE.bitacoraID = B.bitacoraID AND ET.etapaID = BE.etapaID AND B.trasladoID = T.trasladoID AND RE.EspID = E.EspID AND BE.etapaID = "P" AND T.trasladoID = "7" GROUP BY E.EspID');
-    }
-
     
 }//planta
 
