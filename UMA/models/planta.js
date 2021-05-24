@@ -30,7 +30,7 @@ module.exports = class Planta {
     } //save 
 
     static fetchTarjetas(){
-        return db.execute('SELECT * FROM tarjetas');
+        return db.execute('SELECT * FROM tarjetas2');
     }
     
 }//planta

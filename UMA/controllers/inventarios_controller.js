@@ -136,6 +136,20 @@ exports.getPlantulasAlta=(request, response, next) => {
           });
 }
 
+exports.postPlantulasAlta=(request, response, next) => {
+	const planta = new Planta(request.body.razon, 1, request.body.cantidad, 'LP', request.body.especie);
+
+	planta.save()
+		.then( () => {
+			response.redirect('/');
+		}).catch( (err) => {
+			console.log(err);
+		});
+
+}
+	
+
+
 exports.getPlantulasBaja=(request, response, next) => {
 
 	Especie.fetchAll()
