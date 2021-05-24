@@ -9,12 +9,13 @@
         <br>
         <br>
 
-        <form>
+        <form action="semillasAlta" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="inputState">Seleccion</label>
-                    <select id="inputState" class="form-control">
-                        <%for(let especie of especies) {%>
+                    <select id="inputState" name="especie" class="form-control">
+                        <%for(let especie of especies) {%> 
                             <option value="<%= especie.EspID %>"><%= especie.NombreEsp %></option>
                         <%}%>
                     </select>
@@ -24,22 +25,22 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="inputState">Origen de Semilla</label>
-                            <select id="inputState" class="form-control">
-                                <option selected>Colecta</option>
-                                <option>Donacion recibida</option>
-                                <option>Compra</option>
+                            <select id="inputState" class="form-control" name="razon">
+                                <option value="7">Colecta</option>
+                                <option value="5">Donacion recibida</option>
+                                <option value="6">Compra</option>
                             </select>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="disabledTextInput"> Cantidad</label>
-                    <input type="text" id="disabledTextInput" class="form-control"
+                    <input type="number" id="disabledTextInput" class="form-control" name="cantidad"
                         placeholder="Introduce un numero">
                 </div>
             </div>
             <br>
             <div >
                 <a class="btn btn-secondary" href="/">Cancelar</a>
-                <button class="btn btn-success" onclick="">Alta</button>
+                 <input type="submit" name="enviar" class="btn btn-success" value="Alta">
             </div>
         </form>
 

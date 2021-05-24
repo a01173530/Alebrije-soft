@@ -106,6 +106,18 @@ exports.getSemillasAlta=(request, response, next) => {
           });
 }
 
+exports.postSemillasAlta=(request, response, next) => {
+	const semilla = new Planta(request.body.razon, 2, request.body.cantidad, 'LS', request.body.especie);
+
+	semilla.save()
+		.then( () => {
+			response.redirect('/');
+		}).catch( (err) => {
+			console.log(err);
+		});
+
+}
+
 exports.getSemillasBaja=(request, response, next) => {
 
 	Especie.fetchAll()
