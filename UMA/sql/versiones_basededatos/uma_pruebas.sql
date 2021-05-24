@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2021 at 05:44 AM
+-- Generation Time: May 25, 2021 at 12:10 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -72,7 +72,17 @@ INSERT INTO `bitacora` (`bitacoraID`, `fecha`, `trasladoID`, `zonaID`, `cuentaID
 (29, '2021-04-15 00:28:05', 7, 1, 3, 3),
 (30, '2021-05-09 03:39:16', 10, 7, 1, 23),
 (31, '2021-05-09 03:40:39', 5, 5, 1, 12),
-(32, '2021-05-09 03:41:27', 1, 1, 1, 0);
+(32, '2021-05-09 03:41:27', 1, 1, 1, 0),
+(33, '2021-05-13 22:52:43', 7, 8, 1, 0),
+(34, '2021-05-13 22:53:34', 7, 2, 1, 55),
+(35, '2021-05-14 00:57:22', 7, 1, 1, 5),
+(36, '2021-05-19 04:12:08', 7, 6, 1, 300),
+(37, '2021-05-19 04:17:49', 6, 4, 1, 101),
+(38, '2021-05-19 04:20:11', 6, 4, 1, 301),
+(39, '2021-05-19 04:38:55', 9, 4, 1, -12),
+(40, '2021-05-24 03:39:33', 7, 4, 1, 56),
+(41, '2021-05-24 06:54:21', 7, 1, 1, 22),
+(42, '2021-05-24 06:55:04', 7, 4, 1, 31);
 
 -- --------------------------------------------------------
 
@@ -122,7 +132,17 @@ INSERT INTO `bitacora_etapa` (`Fecha`, `bitacoraID`, `etapaID`) VALUES
 ('2021-04-15 00:28:05', 29, 'MP'),
 ('2021-05-09 03:39:16', 30, 'P'),
 ('2021-05-09 03:40:39', 31, 'MP'),
-('2021-05-09 03:41:27', 32, 'LP');
+('2021-05-09 03:41:27', 32, 'LP'),
+('2021-05-13 22:52:43', 33, 'LP'),
+('2021-05-13 22:53:34', 34, 'LS'),
+('2021-05-14 00:57:22', 35, 'P'),
+('2021-05-19 04:12:08', 36, 'MP'),
+('2021-05-19 04:17:49', 37, 'P'),
+('2021-05-19 04:20:11', 38, 'P'),
+('2021-05-19 04:38:55', 39, 'P'),
+('2021-05-24 03:39:33', 40, 'P'),
+('2021-05-24 06:54:21', 41, 'LP'),
+('2021-05-24 06:55:04', 42, 'P');
 
 -- --------------------------------------------------------
 
@@ -143,7 +163,8 @@ CREATE TABLE `cuentas` (
 
 INSERT INTO `cuentas` (`cuentaID`, `correo`, `nombre`, `contrasena`) VALUES
 (1, 'A01704868@itesm.mx', 'Alexander Delgado', '$2a$12$vt0MbOvrxWDzYvSQH6fKIunLq2TzFEKhkJwrpTOG18sceflWeETVm'),
-(3, 'A01705071@itesm.mx', 'Rodolfo', '$2a$12$7Tno8W6yhb9e5vBZOR24V.OA38p10GaIYB4qap9Kah7JExZTNpK6a');
+(3, 'A01705071@itesm.mx', 'Rodolfo', '$2a$12$7Tno8W6yhb9e5vBZOR24V.OA38p10GaIYB4qap9Kah7JExZTNpK6a'),
+(4, 'uma@dehesasanisidro.com', 'audelio hernandez', '$2a$12$hPbf7B4TbIbsb.NgXrQ5O.ymDtTyaWbLvB5Tn1UcqFKk1Oo3spV1G');
 
 -- --------------------------------------------------------
 
@@ -153,32 +174,35 @@ INSERT INTO `cuentas` (`cuentaID`, `correo`, `nombre`, `contrasena`) VALUES
 
 CREATE TABLE `especie` (
   `EspID` int(11) NOT NULL,
-  `NombreEsp` varchar(40) NOT NULL
+  `NombreEsp` varchar(40) NOT NULL,
+  `imagen` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `especie`
 --
 
-INSERT INTO `especie` (`EspID`, `NombreEsp`) VALUES
-(1, 'Echynocatus platyacantus'),
-(2, 'Dasylirion acrotrichum'),
-(3, 'Astrophytum ornatum'),
-(4, 'Cephalocereus senilis'),
-(5, 'Ferocactus histrix'),
-(6, 'Mammillaria hahniana'),
-(7, 'Mammillaria herrerae'),
-(8, 'Mammillaria longimamma'),
-(9, 'Mammillaria nana'),
-(10, 'Mammillaria parkinsonii'),
-(11, 'Mammillaria schiedeana'),
-(12, 'Mammillaria schwarzii'),
-(13, 'Mammillaria zeilmanniana'),
-(14, 'Mammillaria zephyranthoides'),
-(15, 'Stenocactus coptogonus'),
-(16, 'Strombocactus disciformis'),
-(17, 'Echynocatus grusonii'),
-(18, 'Ferocactus pilosus');
+INSERT INTO `especie` (`EspID`, `NombreEsp`, `imagen`) VALUES
+(1, 'Echinocactus platyacanthus', NULL),
+(2, 'Dasylirion acrotrichum', NULL),
+(3, 'Astrophytum ornatum', NULL),
+(4, 'Cephalocereus senilis', NULL),
+(5, 'Ferocactus histrix', NULL),
+(6, 'Mammillaria hahniana', NULL),
+(7, 'Mammillaria herrerae', NULL),
+(8, 'Mammillaria longimamma', NULL),
+(9, 'Mammillaria nana', NULL),
+(10, 'Mammillaria parkinsonii', NULL),
+(11, 'Mammillaria schiedeana', NULL),
+(12, 'Mammillaria schwarzii', NULL),
+(13, 'Mammillaria zeilmanniana', NULL),
+(14, 'Mammillaria zephyranthoides', NULL),
+(15, 'Stenocactus coptogonus', NULL),
+(16, 'Strombocactus disciformis', NULL),
+(17, 'Echinocactus grusonii', NULL),
+(18, 'Ferocactus pilosus', NULL),
+(20, 'girasol', NULL),
+(21, 'Ematacantus', NULL);
 
 -- --------------------------------------------------------
 
@@ -200,6 +224,17 @@ INSERT INTO `etapa` (`etapaID`, `nombreEtapa`) VALUES
 ('LS', 'Lote Semillas'),
 ('MP', 'Planta Madre'),
 ('P', 'Plantas');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `lotes_plantula`
+-- (See below for the actual view)
+--
+CREATE TABLE `lotes_plantula` (
+`NombreEsp` varchar(40)
+,`cantidadLotesPlantulas` decimal(32,0)
+);
 
 -- --------------------------------------------------------
 
@@ -231,6 +266,30 @@ CREATE TABLE `permisos_roles` (
   `rollID` int(11) NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `plantas_madre`
+-- (See below for the actual view)
+--
+CREATE TABLE `plantas_madre` (
+`NombreEsp` varchar(40)
+,`cantidadPlantasMadre` decimal(32,0)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `plantas_reproducidas`
+-- (See below for the actual view)
+--
+CREATE TABLE `plantas_reproducidas` (
+`NombreEsp` varchar(40)
+,`nombreEtapa` varchar(26)
+,`razonTraslado` varchar(26)
+,`cantidadPlantasReproducidas` decimal(32,0)
+);
 
 -- --------------------------------------------------------
 
@@ -280,7 +339,17 @@ INSERT INTO `registro_especie` (`fecha`, `bitacoraID`, `EspID`) VALUES
 ('2021-04-15 00:28:05', 29, 14),
 ('2021-05-09 03:39:16', 30, 18),
 ('2021-05-09 03:40:39', 31, 6),
-('2021-05-09 03:41:27', 32, 1);
+('2021-05-09 03:41:27', 32, 1),
+('2021-05-13 22:52:43', 33, 5),
+('2021-05-13 22:53:34', 34, 7),
+('2021-05-14 00:57:22', 35, 21),
+('2021-05-19 04:12:08', 36, 10),
+('2021-05-19 04:17:49', 37, 1),
+('2021-05-19 04:20:11', 38, 1),
+('2021-05-19 04:38:55', 39, 1),
+('2021-05-24 03:39:33', 40, 1),
+('2021-05-24 06:54:21', 41, 2),
+('2021-05-24 06:55:04', 42, 2);
 
 -- --------------------------------------------------------
 
@@ -316,6 +385,31 @@ CREATE TABLE `roles_cuentas` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `tarjetas`
+-- (See below for the actual view)
+--
+CREATE TABLE `tarjetas` (
+`NombreEsp` varchar(40)
+,`cantidadPlantasMadre` decimal(32,0)
+,`cantidadPlantasReproducidas` decimal(32,0)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `tarjetas2`
+-- (See below for the actual view)
+--
+CREATE TABLE `tarjetas2` (
+`NombreEsp` varchar(40)
+,`cantidadPlantasMadre` decimal(32,0)
+,`cantidadPlantasReproducidas` decimal(32,0)
+,`cantidadLotesPlantulas` decimal(32,0)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `traslado`
 --
 
@@ -334,9 +428,9 @@ INSERT INTO `traslado` (`trasladoID`, `razonTraslado`) VALUES
 (3, 'traslado a plantas'),
 (4, 'traslado de plantas madres'),
 (5, 'donacion recibida'),
-(6, 'comprada'),
-(7, 'colecta'),
-(8, 'donacion enviada'),
+(6, 'adquirida'),
+(7, 'reproduccion'),
+(8, 'donacion otorgada'),
 (9, 'muerte'),
 (10, 'robo');
 
@@ -362,7 +456,53 @@ INSERT INTO `zonas` (`zonaID`, `nombreZona`) VALUES
 (4, 'Jardin Xenofilo 1'),
 (5, 'Jardin Xenofilo 2'),
 (6, 'Jardin Xenofilo 3'),
-(7, 'Zona Siembra Intensiva');
+(7, 'Zona Siembra Intensiva'),
+(8, 'Invernadero 3');
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `lotes_plantula`
+--
+DROP TABLE IF EXISTS `lotes_plantula`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `lotes_plantula`  AS SELECT `e`.`NombreEsp` AS `NombreEsp`, sum(`b`.`cantidad`) AS `cantidadLotesPlantulas` FROM ((((`especie` `e` join `bitacora` `b`) join `registro_especie` `re`) join `bitacora_etapa` `be`) join `etapa` `et`) WHERE `e`.`EspID` = `re`.`EspID` AND `b`.`bitacoraID` = `re`.`bitacoraID` AND `be`.`bitacoraID` = `b`.`bitacoraID` AND `be`.`etapaID` = `et`.`etapaID` AND `be`.`etapaID` = 'LP' GROUP BY `e`.`EspID` ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `plantas_madre`
+--
+DROP TABLE IF EXISTS `plantas_madre`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `plantas_madre`  AS SELECT `e`.`NombreEsp` AS `NombreEsp`, sum(`b`.`cantidad`) AS `cantidadPlantasMadre` FROM ((((`especie` `e` join `bitacora` `b`) join `registro_especie` `re`) join `bitacora_etapa` `be`) join `etapa` `et`) WHERE `e`.`EspID` = `re`.`EspID` AND `b`.`bitacoraID` = `re`.`bitacoraID` AND `be`.`bitacoraID` = `b`.`bitacoraID` AND `be`.`etapaID` = `et`.`etapaID` AND `be`.`etapaID` = 'MP' GROUP BY `e`.`EspID` ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `plantas_reproducidas`
+--
+DROP TABLE IF EXISTS `plantas_reproducidas`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `plantas_reproducidas`  AS SELECT `e`.`NombreEsp` AS `NombreEsp`, `et`.`nombreEtapa` AS `nombreEtapa`, `t`.`razonTraslado` AS `razonTraslado`, sum(`b`.`cantidad`) AS `cantidadPlantasReproducidas` FROM (((((`bitacora` `b` join `bitacora_etapa` `be`) join `especie` `e`) join `etapa` `et`) join `registro_especie` `re`) join `traslado` `t`) WHERE `b`.`bitacoraID` = `be`.`bitacoraID` AND `be`.`etapaID` = `et`.`etapaID` AND `re`.`bitacoraID` = `b`.`bitacoraID` AND `et`.`etapaID` = `be`.`etapaID` AND `b`.`trasladoID` = `t`.`trasladoID` AND `re`.`EspID` = `e`.`EspID` AND `be`.`etapaID` = 'P' AND `t`.`trasladoID` = '7' GROUP BY `e`.`EspID` ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `tarjetas`
+--
+DROP TABLE IF EXISTS `tarjetas`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `tarjetas`  AS SELECT `plantas_madre`.`NombreEsp` AS `NombreEsp`, `plantas_madre`.`cantidadPlantasMadre` AS `cantidadPlantasMadre`, ifnull(`plantas_reproducidas`.`cantidadPlantasReproducidas`,0) AS `cantidadPlantasReproducidas` FROM (`plantas_madre` left join `plantas_reproducidas` on(`plantas_madre`.`NombreEsp` = `plantas_reproducidas`.`NombreEsp`)) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `tarjetas2`
+--
+DROP TABLE IF EXISTS `tarjetas2`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `tarjetas2`  AS SELECT `plantas_madre`.`NombreEsp` AS `NombreEsp`, `plantas_madre`.`cantidadPlantasMadre` AS `cantidadPlantasMadre`, ifnull(`plantas_reproducidas`.`cantidadPlantasReproducidas`,0) AS `cantidadPlantasReproducidas`, ifnull(`lotes_plantula`.`cantidadLotesPlantulas`,0) AS `cantidadLotesPlantulas` FROM ((`plantas_madre` left join `plantas_reproducidas` on(`plantas_madre`.`NombreEsp` = `plantas_reproducidas`.`NombreEsp`)) left join `lotes_plantula` on(`plantas_madre`.`NombreEsp` = `lotes_plantula`.`NombreEsp`)) ;
 
 --
 -- Indexes for dumped tables
@@ -464,25 +604,25 @@ ALTER TABLE `zonas`
 -- AUTO_INCREMENT for table `bitacora`
 --
 ALTER TABLE `bitacora`
-  MODIFY `bitacoraID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `bitacoraID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `bitacora_etapa`
 --
 ALTER TABLE `bitacora_etapa`
-  MODIFY `bitacoraID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `bitacoraID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `cuentas`
 --
 ALTER TABLE `cuentas`
-  MODIFY `cuentaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cuentaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `especie`
 --
 ALTER TABLE `especie`
-  MODIFY `EspID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `EspID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `permisos_roles`
@@ -494,7 +634,7 @@ ALTER TABLE `permisos_roles`
 -- AUTO_INCREMENT for table `registro_especie`
 --
 ALTER TABLE `registro_especie`
-  MODIFY `bitacoraID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `bitacoraID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -512,7 +652,7 @@ ALTER TABLE `traslado`
 -- AUTO_INCREMENT for table `zonas`
 --
 ALTER TABLE `zonas`
-  MODIFY `zonaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `zonaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
