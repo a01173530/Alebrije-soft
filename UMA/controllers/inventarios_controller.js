@@ -64,6 +64,17 @@ exports.getPlantasAlta=(request, response, next) => {
           });
 }
 
+exports.postPlantasAlta=(request, response, next) => {
+	const planta = new Planta(request.body.razon, request.body.zona, request.body.cantidad,request.body.etapa, request.body.especie);
+
+	planta.save()
+		.then( () => {
+			response.redirect('/');
+		}).catch( (err) => {
+			console.log(err);
+		});
+}
+
 exports.getPlantasBaja=(request, response, next) => {
 
 	Especie.fetchAll()

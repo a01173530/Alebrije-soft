@@ -5,15 +5,15 @@
         <h1><%=titulo%></h1>
     <div class="container">
 
-
         <br>
         <br>
 
-        <form>
+        <form action="plantasAlta" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="inputState">Seleccion</label>
-                    <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control" name="especie">
                         <%for(let especie of especies) {%>
                             <option value="<%= especie.EspID %>"><%= especie.NombreEsp %></option>
                         <%}%>
@@ -21,40 +21,39 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputState">Etapa</label>
-                    <select id="inputState" class="form-control">
-                        <option>Plantas</option>
-                        <option>Plantas Madre</option>
+                    <select id="inputState" class="form-control" name="etapa">
+                        <option value="P">Plantas</option>
+                        <option value="MP">Plantas Madre</option>
                     </select>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="inputState">Zona</label>
-                    <select id="inputState" class="form-control">
-                        <option>JARDIN XENÓFILO 1 </option>
-                        <option>JARDIN XENÓFILO 2 </option>
-                        <option>JARDIN XENÓFILO 3</option>
-                        <option>MALLA SOMBRA</option>
+                    <select id="inputState" class="form-control" name="zona">
+                        <option value="4">JARDIN XENÓFILO 1 </option>
+                        <option value="5">JARDIN XENÓFILO 2 </option>
+                        <option value="6">JARDIN XENÓFILO 3</option>
+                        <option value="3">MALLA SOMBRA</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputState">Razón de traslado</label>
-                            <select id="inputState" class="form-control">
-                                <option selected>Adquiridas</option>
-                                <option>Donacion recibida</option>
-                                <option>Reproduccion</option>
+                            <select id="inputState" class="form-control" name="razon">
+                                <option selected value="6">Adquiridas</option>
+                                <option value="5">Donacion recibida</option>
+                                <option value="7">Reproduccion</option>
                             </select>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="disabledTextInput"> Cantidad</label>
-                    <input type="text" id="disabledTextInput" class="form-control"
-                        placeholder="Introduce un numero">
+                    <label for="disabledTextInput">Cantidad</label>
+                    <input type="number" id="disabledTextInput" class="form-control" name="cantidad" placeholder="Introduce un numero">
                 </div>
             </div>
             <br>
             <div >
                 <a class="btn btn-secondary" href="/">Cancelar</a>
-                <button class="btn btn-success" onclick="">Alta</button>
+                <button type="submit" class="btn btn-success">Alta</button>
             </div>
         </form>
 
