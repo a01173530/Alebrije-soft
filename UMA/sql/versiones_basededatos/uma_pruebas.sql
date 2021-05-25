@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2021 at 12:10 AM
+-- Generation Time: May 25, 2021 at 03:27 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -183,12 +183,12 @@ CREATE TABLE `especie` (
 --
 
 INSERT INTO `especie` (`EspID`, `NombreEsp`, `imagen`) VALUES
-(1, 'Echinocactus platyacanthus', NULL),
-(2, 'Dasylirion acrotrichum', NULL),
-(3, 'Astrophytum ornatum', NULL),
-(4, 'Cephalocereus senilis', NULL),
-(5, 'Ferocactus histrix', NULL),
-(6, 'Mammillaria hahniana', NULL),
+(1, 'Echinocactus platyacanthus', 'uploads\\E_plathyacanthus.jpg'),
+(2, 'Dasylirion acrotrichum', 'uploads\\D_acrotichum.jpg'),
+(3, 'Astrophytum ornatum', 'uploads\\A_ornatum.jpeg'),
+(4, 'Cephalocereus senilis', 'uploads\\C_senilis.jpg'),
+(5, 'Ferocactus histrix', 'uploads\\F_histrix.jpg'),
+(6, 'Mammillaria hahniana', 'uploads\\M_hahniana.jpeg'),
 (7, 'Mammillaria herrerae', NULL),
 (8, 'Mammillaria longimamma', NULL),
 (9, 'Mammillaria nana', NULL),
@@ -276,6 +276,18 @@ CREATE TABLE `permisos_roles` (
 CREATE TABLE `plantas_madre` (
 `NombreEsp` varchar(40)
 ,`cantidadPlantasMadre` decimal(32,0)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `plantas_madre2`
+-- (See below for the actual view)
+--
+CREATE TABLE `plantas_madre2` (
+`NombreEsp` varchar(40)
+,`cantidadPlantasMadre` decimal(32,0)
+,`imagen` varchar(300)
 );
 
 -- --------------------------------------------------------
@@ -410,6 +422,20 @@ CREATE TABLE `tarjetas2` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `tarjetas3`
+-- (See below for the actual view)
+--
+CREATE TABLE `tarjetas3` (
+`NombreEsp` varchar(40)
+,`cantidadPlantasMadre` decimal(32,0)
+,`cantidadPlantasReproducidas` decimal(32,0)
+,`cantidadLotesPlantulas` decimal(32,0)
+,`imagen` varchar(300)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `traslado`
 --
 
@@ -480,6 +506,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
+-- Structure for view `plantas_madre2`
+--
+DROP TABLE IF EXISTS `plantas_madre2`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `plantas_madre2`  AS SELECT `e`.`NombreEsp` AS `NombreEsp`, sum(`b`.`cantidad`) AS `cantidadPlantasMadre`, `e`.`imagen` AS `imagen` FROM ((((`especie` `e` join `bitacora` `b`) join `registro_especie` `re`) join `bitacora_etapa` `be`) join `etapa` `et`) WHERE `e`.`EspID` = `re`.`EspID` AND `b`.`bitacoraID` = `re`.`bitacoraID` AND `be`.`bitacoraID` = `b`.`bitacoraID` AND `be`.`etapaID` = `et`.`etapaID` AND `be`.`etapaID` = 'MP' GROUP BY `e`.`EspID` ;
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `plantas_reproducidas`
 --
 DROP TABLE IF EXISTS `plantas_reproducidas`;
@@ -503,6 +538,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `tarjetas2`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `tarjetas2`  AS SELECT `plantas_madre`.`NombreEsp` AS `NombreEsp`, `plantas_madre`.`cantidadPlantasMadre` AS `cantidadPlantasMadre`, ifnull(`plantas_reproducidas`.`cantidadPlantasReproducidas`,0) AS `cantidadPlantasReproducidas`, ifnull(`lotes_plantula`.`cantidadLotesPlantulas`,0) AS `cantidadLotesPlantulas` FROM ((`plantas_madre` left join `plantas_reproducidas` on(`plantas_madre`.`NombreEsp` = `plantas_reproducidas`.`NombreEsp`)) left join `lotes_plantula` on(`plantas_madre`.`NombreEsp` = `lotes_plantula`.`NombreEsp`)) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `tarjetas3`
+--
+DROP TABLE IF EXISTS `tarjetas3`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `tarjetas3`  AS SELECT `plantas_madre2`.`NombreEsp` AS `NombreEsp`, `plantas_madre2`.`cantidadPlantasMadre` AS `cantidadPlantasMadre`, ifnull(`plantas_reproducidas`.`cantidadPlantasReproducidas`,0) AS `cantidadPlantasReproducidas`, ifnull(`lotes_plantula`.`cantidadLotesPlantulas`,0) AS `cantidadLotesPlantulas`, `plantas_madre2`.`imagen` AS `imagen` FROM ((`plantas_madre2` left join `plantas_reproducidas` on(`plantas_madre2`.`NombreEsp` = `plantas_reproducidas`.`NombreEsp`)) left join `lotes_plantula` on(`plantas_madre2`.`NombreEsp` = `lotes_plantula`.`NombreEsp`)) ;
 
 --
 -- Indexes for dumped tables

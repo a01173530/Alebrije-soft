@@ -21,7 +21,6 @@ app.use(session({
     saveUninitialized: false, //Asegura que no se guarde una sesión para una petición que no lo necesita
 }));
 
-//const multer = require('multer');
 const path = require('path');
 const csrf = require('csurf');
 const csrfProtection = csrf();
@@ -46,6 +45,7 @@ const fileStorage = multer.diskStorage({
 });
 
 app.use(multer({ storage: fileStorage }).single('imagen')); 
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 //Middleware
 app.use((request, response, next) => {

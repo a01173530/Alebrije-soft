@@ -4,17 +4,17 @@ const db = require('../util/database');
 module.exports = class Especie {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
-    constructor(EspID,NombreEsp) {
+    constructor(EspID,NombreEsp, imagen) {
         this.EspID = EspID;
         this.NombreEsp = NombreEsp;
-
+        this.imagen = imagen;
     }
 
     //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
 
-      return db.execute('INSERT INTO Especie (EspID,NombreEsp) VALUES (?,?)',
-        [this.EspID, this.NombreEsp]
+      return db.execute('INSERT INTO Especie (EspID,NombreEsp,imagen) VALUES (?,?,?)',
+        [this.EspID, this.NombreEsp, this.imagen]
         );
         
     }

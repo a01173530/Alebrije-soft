@@ -9,7 +9,7 @@ exports.getNuevaEspecie=(request, response, next) => {
 
 exports.postNuevaEspecie=(request, response, next) => {
    console.log(request.body);
-   const especie = new Especie(request.body.EspID,request.body.NombreEsp);
+   const especie = new Especie(request.body.EspID,request.body.NombreEsp, request.file.path);
    especie.save()
       .then(() => {
         request.session.ultima_persona = request.body.NombreEsp;
