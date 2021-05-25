@@ -7,10 +7,6 @@ const isAuth = require('../util/is-auth');
 
 router.get('/',   isAuth, especiesController.get);
 
-
-//router.get('/',  /* isAuth,*/ especiesController.get);
-
-
-
+router.get('/:criterio', isAuth, especiesController.getBuscar);
 
 module.exports = router;

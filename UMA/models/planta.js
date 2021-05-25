@@ -32,6 +32,10 @@ module.exports = class Planta {
     static fetchTarjetas(){
         return db.execute('SELECT * FROM tarjetas3');
     }
+
+    static fetch(criterio){
+        return db.execute('SELECT * FROM tarjetas3 WHERE NombreEsp LIKE ?',  ['%'+criterio+'%']);
+    }
     
 }//planta
 
