@@ -38,7 +38,7 @@ exports.getAgregar=(request, response, next) => {
 
 
 exports.postAgregar=(request, response, next) => {
-	const planta = new Planta(request.body.razon, request.body.zona, request.body.cantidad,request.body.etapa, request.body.especie);
+	const planta = new Planta(request.body.razon, request.body.zona, request.body.especie);
 
 	planta.save()
 		.then( () => {
@@ -65,14 +65,13 @@ exports.getPlantasAlta=(request, response, next) => {
 }
 
 exports.postPlantasAlta=(request, response, next) => {
-	const planta = new Planta(request.body.razon, request.body.zona, request.body.cantidad,request.body.etapa, request.body.especie);
+	const planta = new Planta(request.body.razon, request.body.zona, request.body.especie);
 
-	planta.save()
-		.then( () => {
-			response.redirect('/');
-		}).catch( (err) => {
-			console.log(err);
-		});
+	for(let i = 0; i<request.body.cantidad; i++){
+		planta.save();
+	}
+
+	response.redirect('/');
 }
 
 exports.getPlantasBaja=(request, response, next) => {
@@ -83,6 +82,8 @@ exports.getPlantasBaja=(request, response, next) => {
 				titulo:'Baja de planta',
 				especies: especies
 			});
+
+			
 				
           })
           .catch(err => {
