@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2021 at 03:27 AM
+-- Generation Time: May 31, 2021 at 06:58 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -20,129 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `uma_pruebas`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `bitacora`
---
-
-CREATE TABLE `bitacora` (
-  `bitacoraID` int(11) NOT NULL,
-  `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
-  `trasladoID` int(11) NOT NULL,
-  `zonaID` int(11) NOT NULL,
-  `cuentaID` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `bitacora`
---
-
-INSERT INTO `bitacora` (`bitacoraID`, `fecha`, `trasladoID`, `zonaID`, `cuentaID`, `cantidad`) VALUES
-(1, '2021-04-14 23:19:00', 7, 4, 1, 9),
-(2, '2021-04-14 23:26:06', 7, 4, 1, 26),
-(3, '2021-04-14 23:27:41', 7, 4, 1, 50),
-(4, '2021-04-15 00:08:02', 6, 4, 1, 5),
-(5, '2021-04-15 00:08:02', 6, 1, 1, 20),
-(6, '2021-04-15 00:08:02', 6, 3, 1, 842),
-(7, '2021-04-15 00:08:02', 6, 4, 1, 10),
-(8, '2021-04-15 00:08:02', 6, 5, 1, 100),
-(9, '2021-04-15 00:08:02', 6, 1, 1, 140),
-(10, '2021-04-15 00:08:02', 6, 1, 1, 300),
-(11, '2021-04-15 00:08:02', 6, 1, 1, 60),
-(12, '2021-04-15 00:08:02', 6, 4, 1, 60),
-(13, '2021-04-15 00:08:02', 6, 1, 1, 100),
-(14, '2021-04-15 00:09:00', 6, 1, 3, 100),
-(15, '2021-04-15 00:09:00', 6, 1, 3, 75),
-(16, '2021-04-15 00:09:00', 6, 1, 3, 100),
-(17, '2021-04-15 00:09:01', 6, 1, 3, 91),
-(18, '2021-04-15 00:09:01', 6, 1, 3, 93),
-(19, '2021-04-15 00:09:01', 6, 1, 3, 30),
-(20, '2021-04-15 00:09:01', 6, 1, 3, 184),
-(21, '2021-04-15 00:09:01', 6, 1, 3, 76),
-(22, '2021-04-15 00:09:01', 6, 1, 3, 100),
-(23, '2021-04-15 00:09:01', 6, 1, 3, 43),
-(24, '2021-04-15 00:28:05', 7, 1, 3, 5),
-(25, '2021-04-15 00:28:05', 7, 1, 3, 38),
-(26, '2021-04-15 00:28:05', 7, 1, 3, 21),
-(27, '2021-04-15 00:28:05', 7, 1, 3, 44),
-(28, '2021-04-15 00:28:05', 7, 1, 3, 90),
-(29, '2021-04-15 00:28:05', 7, 1, 3, 3),
-(30, '2021-05-09 03:39:16', 10, 7, 1, 23),
-(31, '2021-05-09 03:40:39', 5, 5, 1, 12),
-(32, '2021-05-09 03:41:27', 1, 1, 1, 0),
-(33, '2021-05-13 22:52:43', 7, 8, 1, 0),
-(34, '2021-05-13 22:53:34', 7, 2, 1, 55),
-(35, '2021-05-14 00:57:22', 7, 1, 1, 5),
-(36, '2021-05-19 04:12:08', 7, 6, 1, 300),
-(37, '2021-05-19 04:17:49', 6, 4, 1, 101),
-(38, '2021-05-19 04:20:11', 6, 4, 1, 301),
-(39, '2021-05-19 04:38:55', 9, 4, 1, -12),
-(40, '2021-05-24 03:39:33', 7, 4, 1, 56),
-(41, '2021-05-24 06:54:21', 7, 1, 1, 22),
-(42, '2021-05-24 06:55:04', 7, 4, 1, 31);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `bitacora_etapa`
---
-
-CREATE TABLE `bitacora_etapa` (
-  `Fecha` timestamp NOT NULL DEFAULT current_timestamp(),
-  `bitacoraID` int(11) NOT NULL,
-  `etapaID` varchar(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `bitacora_etapa`
---
-
-INSERT INTO `bitacora_etapa` (`Fecha`, `bitacoraID`, `etapaID`) VALUES
-('2021-04-14 23:19:00', 1, 'MP'),
-('2021-04-14 23:26:06', 2, 'MP'),
-('2021-04-14 23:27:41', 3, 'MP'),
-('2021-04-15 00:08:02', 4, 'MP'),
-('2021-04-15 00:08:02', 5, 'MP'),
-('2021-04-15 00:08:02', 6, 'MP'),
-('2021-04-15 00:08:02', 7, 'MP'),
-('2021-04-15 00:08:02', 8, 'MP'),
-('2021-04-15 00:08:02', 9, 'MP'),
-('2021-04-15 00:08:02', 10, 'MP'),
-('2021-04-15 00:08:02', 11, 'MP'),
-('2021-04-15 00:08:02', 12, 'MP'),
-('2021-04-15 00:08:02', 13, 'MP'),
-('2021-04-15 00:09:00', 14, 'MP'),
-('2021-04-15 00:09:00', 15, 'MP'),
-('2021-04-15 00:09:01', 16, 'MP'),
-('2021-04-15 00:09:01', 17, 'MP'),
-('2021-04-15 00:09:01', 18, 'MP'),
-('2021-04-15 00:09:01', 19, 'MP'),
-('2021-04-15 00:09:01', 20, 'MP'),
-('2021-04-15 00:09:01', 21, 'MP'),
-('2021-04-15 00:09:01', 22, 'MP'),
-('2021-04-15 00:09:01', 23, 'MP'),
-('2021-04-15 00:28:05', 24, 'MP'),
-('2021-04-15 00:28:05', 25, 'MP'),
-('2021-04-15 00:28:05', 26, 'MP'),
-('2021-04-15 00:28:05', 27, 'MP'),
-('2021-04-15 00:28:05', 28, 'MP'),
-('2021-04-15 00:28:05', 29, 'MP'),
-('2021-05-09 03:39:16', 30, 'P'),
-('2021-05-09 03:40:39', 31, 'MP'),
-('2021-05-09 03:41:27', 32, 'LP'),
-('2021-05-13 22:52:43', 33, 'LP'),
-('2021-05-13 22:53:34', 34, 'LS'),
-('2021-05-14 00:57:22', 35, 'P'),
-('2021-05-19 04:12:08', 36, 'MP'),
-('2021-05-19 04:17:49', 37, 'P'),
-('2021-05-19 04:20:11', 38, 'P'),
-('2021-05-19 04:38:55', 39, 'P'),
-('2021-05-24 03:39:33', 40, 'P'),
-('2021-05-24 06:54:21', 41, 'LP'),
-('2021-05-24 06:55:04', 42, 'P');
 
 -- --------------------------------------------------------
 
@@ -201,29 +78,108 @@ INSERT INTO `especie` (`EspID`, `NombreEsp`, `imagen`) VALUES
 (16, 'Strombocactus disciformis', NULL),
 (17, 'Echinocactus grusonii', NULL),
 (18, 'Ferocactus pilosus', NULL),
-(20, 'girasol', NULL),
-(21, 'Ematacantus', NULL);
+(21, 'Ematacantus', NULL),
+(22, 'girasol', 'uploads\\917_download.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `etapa`
+-- Table structure for table `loteplantula_especie`
 --
 
-CREATE TABLE `etapa` (
-  `etapaID` varchar(2) NOT NULL,
-  `nombreEtapa` varchar(26) NOT NULL
+CREATE TABLE `loteplantula_especie` (
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
+  `lotePlantulaID` int(11) NOT NULL,
+  `EspID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `etapa`
+-- Dumping data for table `loteplantula_especie`
 --
 
-INSERT INTO `etapa` (`etapaID`, `nombreEtapa`) VALUES
-('LP', 'Lote Plantulas'),
-('LS', 'Lote Semillas'),
-('MP', 'Planta Madre'),
-('P', 'Plantas');
+INSERT INTO `loteplantula_especie` (`fecha`, `lotePlantulaID`, `EspID`) VALUES
+('2021-05-31 02:25:52', 1, 1),
+('2021-05-31 02:25:52', 2, 1),
+('2021-05-31 02:25:52', 3, 2),
+('2021-05-31 02:25:52', 4, 2),
+('2021-05-31 02:25:52', 5, 3),
+('2021-05-31 02:25:52', 6, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lotesemillas_especie`
+--
+
+CREATE TABLE `lotesemillas_especie` (
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
+  `loteSemillaID` int(11) NOT NULL,
+  `EspID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `lotesemillas_especie`
+--
+
+INSERT INTO `lotesemillas_especie` (`fecha`, `loteSemillaID`, `EspID`) VALUES
+('2021-05-31 02:27:14', 1, 1),
+('2021-05-31 02:27:14', 2, 1),
+('2021-05-31 02:27:14', 3, 2),
+('2021-05-31 02:27:14', 4, 2),
+('2021-05-31 02:27:14', 5, 3),
+('2021-05-31 02:27:14', 6, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lotesplantula`
+--
+
+CREATE TABLE `lotesplantula` (
+  `lotePlantulaID` int(11) NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
+  `trasladoID` int(11) NOT NULL,
+  `zonaID` int(11) NOT NULL,
+  `cuentaID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `lotesplantula`
+--
+
+INSERT INTO `lotesplantula` (`lotePlantulaID`, `fecha`, `trasladoID`, `zonaID`, `cuentaID`) VALUES
+(1, '2021-05-31 02:25:52', 6, 1, 3),
+(2, '2021-05-31 02:25:52', 7, 1, 3),
+(3, '2021-05-31 02:25:52', 6, 1, 3),
+(4, '2021-05-31 02:25:52', 7, 1, 3),
+(5, '2021-05-31 02:25:52', 6, 1, 3),
+(6, '2021-05-31 02:25:52', 7, 1, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lotessemillas`
+--
+
+CREATE TABLE `lotessemillas` (
+  `loteSemillaID` int(11) NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
+  `trasladoID` int(11) NOT NULL,
+  `zonaID` int(11) NOT NULL,
+  `cuentaID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `lotessemillas`
+--
+
+INSERT INTO `lotessemillas` (`loteSemillaID`, `fecha`, `trasladoID`, `zonaID`, `cuentaID`) VALUES
+(1, '2021-05-31 02:27:14', 6, 1, 3),
+(2, '2021-05-31 02:27:14', 7, 1, 3),
+(3, '2021-05-31 02:27:14', 6, 1, 3),
+(4, '2021-05-31 02:27:14', 7, 1, 3),
+(5, '2021-05-31 02:27:14', 6, 1, 3),
+(6, '2021-05-31 02:27:14', 7, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -233,7 +189,7 @@ INSERT INTO `etapa` (`etapaID`, `nombreEtapa`) VALUES
 --
 CREATE TABLE `lotes_plantula` (
 `NombreEsp` varchar(40)
-,`cantidadLotesPlantulas` decimal(32,0)
+,`cantidadLotesPlantulas` bigint(21)
 );
 
 -- --------------------------------------------------------
@@ -270,13 +226,88 @@ CREATE TABLE `permisos_roles` (
 -- --------------------------------------------------------
 
 --
--- Stand-in structure for view `plantas_madre`
--- (See below for the actual view)
+-- Table structure for table `plantamadre_especie`
 --
-CREATE TABLE `plantas_madre` (
-`NombreEsp` varchar(40)
-,`cantidadPlantasMadre` decimal(32,0)
-);
+
+CREATE TABLE `plantamadre_especie` (
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
+  `plantaMadreID` int(11) NOT NULL,
+  `EspID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `plantamadre_especie`
+--
+
+INSERT INTO `plantamadre_especie` (`fecha`, `plantaMadreID`, `EspID`) VALUES
+('2021-05-31 02:16:38', 1, 1),
+('2021-05-31 02:16:38', 2, 1),
+('2021-05-31 02:16:38', 3, 2),
+('2021-05-31 02:16:38', 4, 2),
+('2021-05-31 02:16:38', 5, 3),
+('2021-05-31 02:16:38', 6, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `plantas`
+--
+
+CREATE TABLE `plantas` (
+  `plantaID` int(11) NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
+  `trasladoID` int(11) NOT NULL,
+  `zonaID` int(11) NOT NULL,
+  `cuentaID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `plantas`
+--
+
+INSERT INTO `plantas` (`plantaID`, `fecha`, `trasladoID`, `zonaID`, `cuentaID`) VALUES
+(1, '2021-05-31 02:13:30', 6, 1, 3),
+(2, '2021-05-31 02:13:30', 7, 1, 3),
+(3, '2021-05-31 02:13:30', 6, 1, 3),
+(4, '2021-05-31 02:13:30', 7, 1, 3),
+(5, '2021-05-31 02:13:30', 6, 1, 3),
+(6, '2021-05-31 02:13:30', 7, 1, 3),
+(7, '2021-05-31 03:45:47', 7, 1, 3),
+(8, '2021-05-31 03:45:47', 7, 1, 3),
+(9, '2021-05-31 03:45:47', 7, 1, 3),
+(10, '2021-05-31 03:45:47', 7, 1, 3),
+(11, '2021-05-31 03:45:47', 7, 1, 3),
+(12, '2021-05-31 03:45:47', 7, 1, 3),
+(13, '2021-05-31 04:10:28', 7, 5, 1),
+(14, '2021-05-31 04:13:43', 7, 5, 1),
+(15, '2021-05-31 04:13:43', 7, 5, 1),
+(16, '2021-05-31 04:13:43', 7, 5, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `plantasmadre`
+--
+
+CREATE TABLE `plantasmadre` (
+  `plantaMadreID` int(11) NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
+  `trasladoID` int(11) NOT NULL,
+  `zonaID` int(11) NOT NULL,
+  `cuentaID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `plantasmadre`
+--
+
+INSERT INTO `plantasmadre` (`plantaMadreID`, `fecha`, `trasladoID`, `zonaID`, `cuentaID`) VALUES
+(1, '2021-05-31 02:16:38', 6, 1, 3),
+(2, '2021-05-31 02:16:38', 7, 1, 3),
+(3, '2021-05-31 02:16:38', 6, 1, 3),
+(4, '2021-05-31 02:16:38', 7, 1, 3),
+(5, '2021-05-31 02:16:38', 6, 1, 3),
+(6, '2021-05-31 02:16:38', 7, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -286,7 +317,7 @@ CREATE TABLE `plantas_madre` (
 --
 CREATE TABLE `plantas_madre2` (
 `NombreEsp` varchar(40)
-,`cantidadPlantasMadre` decimal(32,0)
+,`cantidadPlantasMadre` bigint(21)
 ,`imagen` varchar(300)
 );
 
@@ -298,70 +329,42 @@ CREATE TABLE `plantas_madre2` (
 --
 CREATE TABLE `plantas_reproducidas` (
 `NombreEsp` varchar(40)
-,`nombreEtapa` varchar(26)
-,`razonTraslado` varchar(26)
-,`cantidadPlantasReproducidas` decimal(32,0)
+,`cantidadPlantasReproducidas` bigint(21)
 );
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `registro_especie`
+-- Table structure for table `planta_especie`
 --
 
-CREATE TABLE `registro_especie` (
+CREATE TABLE `planta_especie` (
   `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
-  `bitacoraID` int(11) NOT NULL,
+  `plantaID` int(11) NOT NULL,
   `EspID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `registro_especie`
+-- Dumping data for table `planta_especie`
 --
 
-INSERT INTO `registro_especie` (`fecha`, `bitacoraID`, `EspID`) VALUES
-('2021-04-14 23:25:30', 1, 1),
-('2021-04-14 23:26:06', 2, 2),
-('2021-04-14 23:27:41', 3, 5),
-('2021-04-15 00:08:02', 4, 1),
-('2021-04-15 00:08:02', 5, 2),
-('2021-04-15 00:08:02', 6, 2),
-('2021-04-15 00:08:02', 7, 2),
-('2021-04-15 00:08:02', 8, 2),
-('2021-04-15 00:08:02', 9, 3),
-('2021-04-15 00:08:02', 10, 4),
-('2021-04-15 00:08:02', 11, 5),
-('2021-04-15 00:08:02', 12, 5),
-('2021-04-15 00:08:02', 13, 6),
-('2021-04-15 00:09:00', 14, 7),
-('2021-04-15 00:09:00', 15, 8),
-('2021-04-15 00:09:01', 16, 9),
-('2021-04-15 00:09:01', 17, 10),
-('2021-04-15 00:09:01', 18, 11),
-('2021-04-15 00:09:01', 19, 12),
-('2021-04-15 00:09:01', 20, 13),
-('2021-04-15 00:09:01', 21, 14),
-('2021-04-15 00:09:01', 22, 15),
-('2021-04-15 00:09:01', 23, 16),
-('2021-04-15 00:28:05', 24, 3),
-('2021-04-15 00:28:05', 25, 4),
-('2021-04-15 00:28:05', 26, 8),
-('2021-04-15 00:28:05', 27, 10),
-('2021-04-15 00:28:05', 28, 12),
-('2021-04-15 00:28:05', 29, 14),
-('2021-05-09 03:39:16', 30, 18),
-('2021-05-09 03:40:39', 31, 6),
-('2021-05-09 03:41:27', 32, 1),
-('2021-05-13 22:52:43', 33, 5),
-('2021-05-13 22:53:34', 34, 7),
-('2021-05-14 00:57:22', 35, 21),
-('2021-05-19 04:12:08', 36, 10),
-('2021-05-19 04:17:49', 37, 1),
-('2021-05-19 04:20:11', 38, 1),
-('2021-05-19 04:38:55', 39, 1),
-('2021-05-24 03:39:33', 40, 1),
-('2021-05-24 06:54:21', 41, 2),
-('2021-05-24 06:55:04', 42, 2);
+INSERT INTO `planta_especie` (`fecha`, `plantaID`, `EspID`) VALUES
+('2021-05-31 02:13:30', 1, 1),
+('2021-05-31 02:13:30', 2, 1),
+('2021-05-31 02:13:30', 3, 2),
+('2021-05-31 02:13:30', 4, 2),
+('2021-05-31 02:13:30', 5, 3),
+('2021-05-31 02:13:30', 6, 3),
+('2021-05-31 03:45:47', 7, 4),
+('2021-05-31 03:45:47', 8, 4),
+('2021-05-31 03:45:47', 9, 4),
+('2021-05-31 03:45:47', 10, 4),
+('2021-05-31 03:45:47', 11, 6),
+('2021-05-31 03:45:47', 12, 2),
+('2021-05-31 04:10:28', 13, 4),
+('2021-05-31 04:13:43', 14, 22),
+('2021-05-31 04:13:43', 15, 22),
+('2021-05-31 04:13:43', 16, 22);
 
 -- --------------------------------------------------------
 
@@ -402,34 +405,9 @@ CREATE TABLE `roles_cuentas` (
 --
 CREATE TABLE `tarjetas` (
 `NombreEsp` varchar(40)
-,`cantidadPlantasMadre` decimal(32,0)
-,`cantidadPlantasReproducidas` decimal(32,0)
-);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `tarjetas2`
--- (See below for the actual view)
---
-CREATE TABLE `tarjetas2` (
-`NombreEsp` varchar(40)
-,`cantidadPlantasMadre` decimal(32,0)
-,`cantidadPlantasReproducidas` decimal(32,0)
-,`cantidadLotesPlantulas` decimal(32,0)
-);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `tarjetas3`
--- (See below for the actual view)
---
-CREATE TABLE `tarjetas3` (
-`NombreEsp` varchar(40)
-,`cantidadPlantasMadre` decimal(32,0)
-,`cantidadPlantasReproducidas` decimal(32,0)
-,`cantidadLotesPlantulas` decimal(32,0)
+,`cantidadPlantasMadre` bigint(21)
+,`cantidadPlantasReproducidas` bigint(21)
+,`cantidadLotesPlantulas` bigint(21)
 ,`imagen` varchar(300)
 );
 
@@ -492,16 +470,7 @@ INSERT INTO `zonas` (`zonaID`, `nombreZona`) VALUES
 --
 DROP TABLE IF EXISTS `lotes_plantula`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `lotes_plantula`  AS SELECT `e`.`NombreEsp` AS `NombreEsp`, sum(`b`.`cantidad`) AS `cantidadLotesPlantulas` FROM ((((`especie` `e` join `bitacora` `b`) join `registro_especie` `re`) join `bitacora_etapa` `be`) join `etapa` `et`) WHERE `e`.`EspID` = `re`.`EspID` AND `b`.`bitacoraID` = `re`.`bitacoraID` AND `be`.`bitacoraID` = `b`.`bitacoraID` AND `be`.`etapaID` = `et`.`etapaID` AND `be`.`etapaID` = 'LP' GROUP BY `e`.`EspID` ;
-
--- --------------------------------------------------------
-
---
--- Structure for view `plantas_madre`
---
-DROP TABLE IF EXISTS `plantas_madre`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `plantas_madre`  AS SELECT `e`.`NombreEsp` AS `NombreEsp`, sum(`b`.`cantidad`) AS `cantidadPlantasMadre` FROM ((((`especie` `e` join `bitacora` `b`) join `registro_especie` `re`) join `bitacora_etapa` `be`) join `etapa` `et`) WHERE `e`.`EspID` = `re`.`EspID` AND `b`.`bitacoraID` = `re`.`bitacoraID` AND `be`.`bitacoraID` = `b`.`bitacoraID` AND `be`.`etapaID` = `et`.`etapaID` AND `be`.`etapaID` = 'MP' GROUP BY `e`.`EspID` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `lotes_plantula`  AS SELECT `e`.`NombreEsp` AS `NombreEsp`, count(`lp`.`lotePlantulaID`) AS `cantidadLotesPlantulas` FROM ((`especie` `e` join `lotesplantula` `lp`) join `loteplantula_especie` `lpe`) WHERE `e`.`EspID` = `lpe`.`EspID` AND `lp`.`lotePlantulaID` = `lpe`.`lotePlantulaID` GROUP BY `e`.`EspID` ;
 
 -- --------------------------------------------------------
 
@@ -510,7 +479,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `plantas_madre2`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `plantas_madre2`  AS SELECT `e`.`NombreEsp` AS `NombreEsp`, sum(`b`.`cantidad`) AS `cantidadPlantasMadre`, `e`.`imagen` AS `imagen` FROM ((((`especie` `e` join `bitacora` `b`) join `registro_especie` `re`) join `bitacora_etapa` `be`) join `etapa` `et`) WHERE `e`.`EspID` = `re`.`EspID` AND `b`.`bitacoraID` = `re`.`bitacoraID` AND `be`.`bitacoraID` = `b`.`bitacoraID` AND `be`.`etapaID` = `et`.`etapaID` AND `be`.`etapaID` = 'MP' GROUP BY `e`.`EspID` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `plantas_madre2`  AS SELECT `e`.`NombreEsp` AS `NombreEsp`, count(`pm`.`plantaMadreID`) AS `cantidadPlantasMadre`, `e`.`imagen` AS `imagen` FROM ((`especie` `e` join `plantasmadre` `pm`) join `plantamadre_especie` `pme`) WHERE `e`.`EspID` = `pme`.`EspID` AND `pm`.`plantaMadreID` = `pme`.`plantaMadreID` GROUP BY `e`.`EspID` ;
 
 -- --------------------------------------------------------
 
@@ -519,7 +488,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `plantas_reproducidas`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `plantas_reproducidas`  AS SELECT `e`.`NombreEsp` AS `NombreEsp`, `et`.`nombreEtapa` AS `nombreEtapa`, `t`.`razonTraslado` AS `razonTraslado`, sum(`b`.`cantidad`) AS `cantidadPlantasReproducidas` FROM (((((`bitacora` `b` join `bitacora_etapa` `be`) join `especie` `e`) join `etapa` `et`) join `registro_especie` `re`) join `traslado` `t`) WHERE `b`.`bitacoraID` = `be`.`bitacoraID` AND `be`.`etapaID` = `et`.`etapaID` AND `re`.`bitacoraID` = `b`.`bitacoraID` AND `et`.`etapaID` = `be`.`etapaID` AND `b`.`trasladoID` = `t`.`trasladoID` AND `re`.`EspID` = `e`.`EspID` AND `be`.`etapaID` = 'P' AND `t`.`trasladoID` = '7' GROUP BY `e`.`EspID` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `plantas_reproducidas`  AS SELECT `e`.`NombreEsp` AS `NombreEsp`, count(`p`.`plantaID`) AS `cantidadPlantasReproducidas` FROM ((`especie` `e` join `plantas` `p`) join `planta_especie` `pe`) WHERE `e`.`EspID` = `pe`.`EspID` AND `p`.`plantaID` = `pe`.`plantaID` AND `p`.`trasladoID` = '7' GROUP BY `e`.`EspID` ;
 
 -- --------------------------------------------------------
 
@@ -528,47 +497,11 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `tarjetas`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `tarjetas`  AS SELECT `plantas_madre`.`NombreEsp` AS `NombreEsp`, `plantas_madre`.`cantidadPlantasMadre` AS `cantidadPlantasMadre`, ifnull(`plantas_reproducidas`.`cantidadPlantasReproducidas`,0) AS `cantidadPlantasReproducidas` FROM (`plantas_madre` left join `plantas_reproducidas` on(`plantas_madre`.`NombreEsp` = `plantas_reproducidas`.`NombreEsp`)) ;
-
--- --------------------------------------------------------
-
---
--- Structure for view `tarjetas2`
---
-DROP TABLE IF EXISTS `tarjetas2`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `tarjetas2`  AS SELECT `plantas_madre`.`NombreEsp` AS `NombreEsp`, `plantas_madre`.`cantidadPlantasMadre` AS `cantidadPlantasMadre`, ifnull(`plantas_reproducidas`.`cantidadPlantasReproducidas`,0) AS `cantidadPlantasReproducidas`, ifnull(`lotes_plantula`.`cantidadLotesPlantulas`,0) AS `cantidadLotesPlantulas` FROM ((`plantas_madre` left join `plantas_reproducidas` on(`plantas_madre`.`NombreEsp` = `plantas_reproducidas`.`NombreEsp`)) left join `lotes_plantula` on(`plantas_madre`.`NombreEsp` = `lotes_plantula`.`NombreEsp`)) ;
-
--- --------------------------------------------------------
-
---
--- Structure for view `tarjetas3`
---
-DROP TABLE IF EXISTS `tarjetas3`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `tarjetas3`  AS SELECT `plantas_madre2`.`NombreEsp` AS `NombreEsp`, `plantas_madre2`.`cantidadPlantasMadre` AS `cantidadPlantasMadre`, ifnull(`plantas_reproducidas`.`cantidadPlantasReproducidas`,0) AS `cantidadPlantasReproducidas`, ifnull(`lotes_plantula`.`cantidadLotesPlantulas`,0) AS `cantidadLotesPlantulas`, `plantas_madre2`.`imagen` AS `imagen` FROM ((`plantas_madre2` left join `plantas_reproducidas` on(`plantas_madre2`.`NombreEsp` = `plantas_reproducidas`.`NombreEsp`)) left join `lotes_plantula` on(`plantas_madre2`.`NombreEsp` = `lotes_plantula`.`NombreEsp`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `tarjetas`  AS SELECT `plantas_madre2`.`NombreEsp` AS `NombreEsp`, `plantas_madre2`.`cantidadPlantasMadre` AS `cantidadPlantasMadre`, ifnull(`plantas_reproducidas`.`cantidadPlantasReproducidas`,0) AS `cantidadPlantasReproducidas`, ifnull(`lotes_plantula`.`cantidadLotesPlantulas`,0) AS `cantidadLotesPlantulas`, `plantas_madre2`.`imagen` AS `imagen` FROM ((`plantas_madre2` left join `plantas_reproducidas` on(`plantas_madre2`.`NombreEsp` = `plantas_reproducidas`.`NombreEsp`)) left join `lotes_plantula` on(`plantas_madre2`.`NombreEsp` = `lotes_plantula`.`NombreEsp`)) ;
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `bitacora`
---
-ALTER TABLE `bitacora`
-  ADD PRIMARY KEY (`bitacoraID`),
-  ADD UNIQUE KEY `bitacoraID` (`bitacoraID`),
-  ADD KEY `trasladoID` (`trasladoID`),
-  ADD KEY `zonaID` (`zonaID`),
-  ADD KEY `cuentaID` (`cuentaID`);
-
---
--- Indexes for table `bitacora_etapa`
---
-ALTER TABLE `bitacora_etapa`
-  ADD PRIMARY KEY (`Fecha`,`bitacoraID`,`etapaID`),
-  ADD UNIQUE KEY `bitacoraID` (`bitacoraID`),
-  ADD KEY `etapaID` (`etapaID`);
 
 --
 -- Indexes for table `cuentas`
@@ -585,10 +518,40 @@ ALTER TABLE `especie`
   ADD UNIQUE KEY `EspID` (`EspID`);
 
 --
--- Indexes for table `etapa`
+-- Indexes for table `loteplantula_especie`
 --
-ALTER TABLE `etapa`
-  ADD PRIMARY KEY (`etapaID`);
+ALTER TABLE `loteplantula_especie`
+  ADD PRIMARY KEY (`lotePlantulaID`,`EspID`,`fecha`),
+  ADD UNIQUE KEY `lotePlantulaID` (`lotePlantulaID`),
+  ADD KEY `EspID` (`EspID`);
+
+--
+-- Indexes for table `lotesemillas_especie`
+--
+ALTER TABLE `lotesemillas_especie`
+  ADD PRIMARY KEY (`loteSemillaID`,`EspID`,`fecha`),
+  ADD UNIQUE KEY `loteSemillaID` (`loteSemillaID`),
+  ADD KEY `EspID` (`EspID`);
+
+--
+-- Indexes for table `lotesplantula`
+--
+ALTER TABLE `lotesplantula`
+  ADD PRIMARY KEY (`lotePlantulaID`),
+  ADD UNIQUE KEY `lotePlantulaID` (`lotePlantulaID`),
+  ADD KEY `trasladoID` (`trasladoID`),
+  ADD KEY `zonaID` (`zonaID`),
+  ADD KEY `cuentaID` (`cuentaID`);
+
+--
+-- Indexes for table `lotessemillas`
+--
+ALTER TABLE `lotessemillas`
+  ADD PRIMARY KEY (`loteSemillaID`),
+  ADD UNIQUE KEY `loteSemillaID` (`loteSemillaID`),
+  ADD KEY `trasladoID` (`trasladoID`),
+  ADD KEY `zonaID` (`zonaID`),
+  ADD KEY `cuentaID` (`cuentaID`);
 
 --
 -- Indexes for table `permisos`
@@ -605,11 +568,39 @@ ALTER TABLE `permisos_roles`
   ADD UNIQUE KEY `permisosID` (`permisosID`);
 
 --
--- Indexes for table `registro_especie`
+-- Indexes for table `plantamadre_especie`
 --
-ALTER TABLE `registro_especie`
-  ADD PRIMARY KEY (`bitacoraID`,`EspID`,`fecha`),
-  ADD UNIQUE KEY `bitacoraID` (`bitacoraID`),
+ALTER TABLE `plantamadre_especie`
+  ADD PRIMARY KEY (`plantaMadreID`,`EspID`,`fecha`),
+  ADD UNIQUE KEY `plantaMadreID` (`plantaMadreID`),
+  ADD KEY `EspID` (`EspID`);
+
+--
+-- Indexes for table `plantas`
+--
+ALTER TABLE `plantas`
+  ADD PRIMARY KEY (`plantaID`),
+  ADD UNIQUE KEY `plantaID` (`plantaID`),
+  ADD KEY `trasladoID` (`trasladoID`),
+  ADD KEY `zonaID` (`zonaID`),
+  ADD KEY `cuentaID` (`cuentaID`);
+
+--
+-- Indexes for table `plantasmadre`
+--
+ALTER TABLE `plantasmadre`
+  ADD PRIMARY KEY (`plantaMadreID`),
+  ADD UNIQUE KEY `plantaMadreID` (`plantaMadreID`),
+  ADD KEY `trasladoID` (`trasladoID`),
+  ADD KEY `zonaID` (`zonaID`),
+  ADD KEY `cuentaID` (`cuentaID`);
+
+--
+-- Indexes for table `planta_especie`
+--
+ALTER TABLE `planta_especie`
+  ADD PRIMARY KEY (`plantaID`,`EspID`,`fecha`),
+  ADD UNIQUE KEY `plantaID` (`plantaID`),
   ADD KEY `EspID` (`EspID`);
 
 --
@@ -645,18 +636,6 @@ ALTER TABLE `zonas`
 --
 
 --
--- AUTO_INCREMENT for table `bitacora`
---
-ALTER TABLE `bitacora`
-  MODIFY `bitacoraID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
-
---
--- AUTO_INCREMENT for table `bitacora_etapa`
---
-ALTER TABLE `bitacora_etapa`
-  MODIFY `bitacoraID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
-
---
 -- AUTO_INCREMENT for table `cuentas`
 --
 ALTER TABLE `cuentas`
@@ -666,7 +645,31 @@ ALTER TABLE `cuentas`
 -- AUTO_INCREMENT for table `especie`
 --
 ALTER TABLE `especie`
-  MODIFY `EspID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `EspID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `loteplantula_especie`
+--
+ALTER TABLE `loteplantula_especie`
+  MODIFY `lotePlantulaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `lotesemillas_especie`
+--
+ALTER TABLE `lotesemillas_especie`
+  MODIFY `loteSemillaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `lotesplantula`
+--
+ALTER TABLE `lotesplantula`
+  MODIFY `lotePlantulaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `lotessemillas`
+--
+ALTER TABLE `lotessemillas`
+  MODIFY `loteSemillaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `permisos_roles`
@@ -675,10 +678,28 @@ ALTER TABLE `permisos_roles`
   MODIFY `permisosID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `registro_especie`
+-- AUTO_INCREMENT for table `plantamadre_especie`
 --
-ALTER TABLE `registro_especie`
-  MODIFY `bitacoraID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+ALTER TABLE `plantamadre_especie`
+  MODIFY `plantaMadreID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `plantas`
+--
+ALTER TABLE `plantas`
+  MODIFY `plantaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `plantasmadre`
+--
+ALTER TABLE `plantasmadre`
+  MODIFY `plantaMadreID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `planta_especie`
+--
+ALTER TABLE `planta_especie`
+  MODIFY `plantaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -703,26 +724,64 @@ ALTER TABLE `zonas`
 --
 
 --
--- Constraints for table `bitacora`
+-- Constraints for table `loteplantula_especie`
 --
-ALTER TABLE `bitacora`
-  ADD CONSTRAINT `bitacora_ibfk_1` FOREIGN KEY (`trasladoID`) REFERENCES `traslado` (`trasladoID`),
-  ADD CONSTRAINT `bitacora_ibfk_2` FOREIGN KEY (`zonaID`) REFERENCES `zonas` (`zonaID`),
-  ADD CONSTRAINT `bitacora_ibfk_3` FOREIGN KEY (`cuentaID`) REFERENCES `cuentas` (`cuentaID`);
+ALTER TABLE `loteplantula_especie`
+  ADD CONSTRAINT `loteplantula_especie_ibfk_1` FOREIGN KEY (`lotePlantulaID`) REFERENCES `lotesplantula` (`lotePlantulaID`),
+  ADD CONSTRAINT `loteplantula_especie_ibfk_2` FOREIGN KEY (`EspID`) REFERENCES `especie` (`EspID`);
 
 --
--- Constraints for table `bitacora_etapa`
+-- Constraints for table `lotesemillas_especie`
 --
-ALTER TABLE `bitacora_etapa`
-  ADD CONSTRAINT `bitacora_etapa_ibfk_1` FOREIGN KEY (`bitacoraID`) REFERENCES `bitacora` (`bitacoraID`),
-  ADD CONSTRAINT `bitacora_etapa_ibfk_2` FOREIGN KEY (`etapaID`) REFERENCES `etapa` (`etapaID`);
+ALTER TABLE `lotesemillas_especie`
+  ADD CONSTRAINT `lotesemillas_especie_ibfk_1` FOREIGN KEY (`loteSemillaID`) REFERENCES `lotessemillas` (`loteSemillaID`),
+  ADD CONSTRAINT `lotesemillas_especie_ibfk_2` FOREIGN KEY (`EspID`) REFERENCES `especie` (`EspID`);
 
 --
--- Constraints for table `registro_especie`
+-- Constraints for table `lotesplantula`
 --
-ALTER TABLE `registro_especie`
-  ADD CONSTRAINT `registro_especie_ibfk_1` FOREIGN KEY (`bitacoraID`) REFERENCES `bitacora` (`bitacoraID`),
-  ADD CONSTRAINT `registro_especie_ibfk_2` FOREIGN KEY (`EspID`) REFERENCES `especie` (`EspID`);
+ALTER TABLE `lotesplantula`
+  ADD CONSTRAINT `lotesplantula_ibfk_1` FOREIGN KEY (`trasladoID`) REFERENCES `traslado` (`trasladoID`),
+  ADD CONSTRAINT `lotesplantula_ibfk_2` FOREIGN KEY (`zonaID`) REFERENCES `zonas` (`zonaID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `lotesplantula_ibfk_3` FOREIGN KEY (`cuentaID`) REFERENCES `cuentas` (`cuentaID`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `lotessemillas`
+--
+ALTER TABLE `lotessemillas`
+  ADD CONSTRAINT `lotessemillas_ibfk_1` FOREIGN KEY (`trasladoID`) REFERENCES `traslado` (`trasladoID`),
+  ADD CONSTRAINT `lotessemillas_ibfk_2` FOREIGN KEY (`zonaID`) REFERENCES `zonas` (`zonaID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `lotessemillas_ibfk_3` FOREIGN KEY (`cuentaID`) REFERENCES `cuentas` (`cuentaID`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `plantamadre_especie`
+--
+ALTER TABLE `plantamadre_especie`
+  ADD CONSTRAINT `plantamadre_especie_ibfk_1` FOREIGN KEY (`plantaMadreID`) REFERENCES `plantasmadre` (`plantaMadreID`),
+  ADD CONSTRAINT `plantamadre_especie_ibfk_2` FOREIGN KEY (`EspID`) REFERENCES `especie` (`EspID`);
+
+--
+-- Constraints for table `plantas`
+--
+ALTER TABLE `plantas`
+  ADD CONSTRAINT `plantas_ibfk_1` FOREIGN KEY (`trasladoID`) REFERENCES `traslado` (`trasladoID`),
+  ADD CONSTRAINT `plantas_ibfk_2` FOREIGN KEY (`zonaID`) REFERENCES `zonas` (`zonaID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `plantas_ibfk_3` FOREIGN KEY (`cuentaID`) REFERENCES `cuentas` (`cuentaID`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `plantasmadre`
+--
+ALTER TABLE `plantasmadre`
+  ADD CONSTRAINT `plantasmadre_ibfk_1` FOREIGN KEY (`trasladoID`) REFERENCES `traslado` (`trasladoID`),
+  ADD CONSTRAINT `plantasmadre_ibfk_2` FOREIGN KEY (`zonaID`) REFERENCES `zonas` (`zonaID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `plantasmadre_ibfk_3` FOREIGN KEY (`cuentaID`) REFERENCES `cuentas` (`cuentaID`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `planta_especie`
+--
+ALTER TABLE `planta_especie`
+  ADD CONSTRAINT `planta_especie_ibfk_1` FOREIGN KEY (`plantaID`) REFERENCES `plantas` (`plantaID`),
+  ADD CONSTRAINT `planta_especie_ibfk_2` FOREIGN KEY (`EspID`) REFERENCES `especie` (`EspID`);
 
 --
 -- Constraints for table `roles_cuentas`

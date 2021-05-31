@@ -5,16 +5,12 @@ const Zona = require('../models/zona');
 exports.getSemillas=(request, response, next) => {
 
 	response.render('inventario',{titulo:'Inventario Semilla'});
-
-
 }
 
 exports.getPlantasMadre=(request, response, next) => {
 
 	response.render('inventario',{titulo:'Inventario Plantas Madre'});
-
 }
-
 
 exports.getAgregar=(request, response, next) => {
 
@@ -33,7 +29,6 @@ exports.getAgregar=(request, response, next) => {
           .catch(err => {
                  console.log(err);
           });
-
 }
 
 
@@ -45,7 +40,7 @@ exports.postAgregar=(request, response, next) => {
 			response.redirect('/inventarios/semillas');
 		}).catch( (err) => {
 			console.log(err);
-			response.redirect('/');
+			response.redirect('/');	
 		});
 }
 
@@ -57,7 +52,6 @@ exports.getPlantasAlta=(request, response, next) => {
 				titulo:'Alta de planta',
 				especies: especies
 			});
-				
           })
           .catch(err => {
                  console.log(err);
@@ -68,7 +62,7 @@ exports.postPlantasAlta=(request, response, next) => {
 	const planta = new Planta(request.body.razon, request.body.zona, request.body.especie);
 
 	for(let i = 0; i<request.body.cantidad; i++){
-		planta.save();
+		planta.savePlantas();
 	}
 
 	response.redirect('/');
@@ -82,15 +76,11 @@ exports.getPlantasBaja=(request, response, next) => {
 				titulo:'Baja de planta',
 				especies: especies
 			});
-
-			
-				
           })
           .catch(err => {
                  console.log(err);
           });
 }
-
 
 exports.getSemillasAlta=(request, response, next) => {
 
@@ -108,15 +98,13 @@ exports.getSemillasAlta=(request, response, next) => {
 }
 
 exports.postSemillasAlta=(request, response, next) => {
-	const semilla = new Planta(request.body.razon, 2, request.body.cantidad, 'LS', request.body.especie);
+	const semilla = new Planta(request.body.razon, 2, request.body.especie);
 
-	semilla.save()
-		.then( () => {
-			response.redirect('/');
-		}).catch( (err) => {
-			console.log(err);
-		});
+	for(let i = 0; i<request.body.cantidad; i++){
+		semilla.saveLotesSemillas();
+	}
 
+	response.redirect('/');
 }
 
 exports.getSemillasBaja=(request, response, next) => {
@@ -150,18 +138,14 @@ exports.getPlantulasAlta=(request, response, next) => {
 }
 
 exports.postPlantulasAlta=(request, response, next) => {
-	const planta = new Planta(request.body.razon, 1, request.body.cantidad, 'LP', request.body.especie);
+	const planta = new Planta(request.body.razon, 1, request.body.especie);
 
-	planta.save()
-		.then( () => {
-			response.redirect('/');
-		}).catch( (err) => {
-			console.log(err);
-		});
-
-}
+	for(let i = 0; i<request.body.cantidad; i++){
+		planta.saveLotesPlantula();
+	}
 	
-
+	response.redirect('/');
+}
 
 exports.getPlantulasBaja=(request, response, next) => {
 
