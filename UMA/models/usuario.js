@@ -5,9 +5,10 @@ const bcrypt = require('bcryptjs');
 module.exports = class Usuario {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
-    constructor(nombre, correo, contrasena  ) {
+    constructor(nombre, correo, rol, contrasena  ) {
         this.nombre = nombre;
         this.correo = correo;
+        this.rol = rol;
         this.contrasena = contrasena;
 
     }
@@ -19,9 +20,35 @@ module.exports = class Usuario {
         //El código es asíncrono, por lo que hay que regresar la promesa
         return bcrypt.hash(this.contrasena, 12)
                .then( (contrasena) => {
-                     return db.execute('INSERT INTO cuentas (nombre, correo, contrasena) values (?, ?, ?);',
-                            [this.nombre, this.correo, contrasena]
-                        );
+                    return db.execute('INSERT INTO cuentas (nombre, correo, contrasena) values (?, ?, ?);',
+                        [this.nombre, this.correo, contrasena]
+                        ).then(()=>{
+                            return db.execute('SELECT cuentaID FROM cuentas WHERE correo= ?;',
+                                [this.correo]
+                                ).then(([rows, fieldData]) => {
+                                    //console.log(rows);
+                                    let cuentaid=rows[0].cuentaID;
+                                    console.log(cuentaid);
+                                    return db.execute('INSERT INTO roles_cuentas (rollID, cuentaID) VALUES (?, ?)',
+                                         [this.rol,cuentaid]);
+                                    
+
+                                }).catch(err => {
+                                    console.log(err);
+                                });
+
+                        }).catch(err => {
+                            console.log(err);
+                        });
+
+
+                        /*).then( () => {
+                            return db.execute('INSERT INTO roles_cuentas (rollID, cuentaID, fecha) VALUES (?, NULL ,NULL)',
+                            [this.rol]
+                            );
+                        }).catch(err => {
+                            console.log(err);
+                        });*/
                 }).catch( err => {
                     console.log(err);
                     throw Error("Nombre de usuario duplicado");   
@@ -29,11 +56,19 @@ module.exports = class Usuario {
         
     }
 
+    
+
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     static fetchAll() {
         return db.execute('SELECT * FROM cuentas')
           
         //return personas;
+        
+    }
+
+    static fetchAllRoles() {
+        return db.execute('SELECT * FROM roles')
+          
         
     }
     
@@ -48,6 +83,10 @@ module.exports = class Usuario {
 
     static fetch(criterio) {
         return db.execute('SELECT * FROM cuentas WHERE correo LIKE ? OR nombre LIKE ?' , ['%'+criterio+'%','%'+criterio+'%']);
+    }
+
+    static getRol(cuentaID) {
+        return db.execute('SELECT * FROM FROM cuentas WHERE cuentaID = ?', [cuentaID]);
     }
 
 }

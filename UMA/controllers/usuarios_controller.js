@@ -8,11 +8,26 @@ exports.logout = (request, response, next) => {
 };
 
 exports.getNewUser = (request, response, next) => {
+    
+    Usuario.fetchAllRoles()
+    .then(([roles, fieldData]) => {
+        response.render('nuevo_usuario', {
+          error: request.session.error === undefined ? false : request.session.error,
+          titulo:"Nuevo usuario",
+          roles: roles
+      });
+          
+    })
+    .catch(err => {
+           console.log(err);
+    });
+    /*
     response.render('nuevo_usuario', {
         error: request.session.error === undefined ? false : request.session.error, 
         titulo: "Nuevo usuario",
-    });
+    });*/
 };
+
 
 exports.get=(request, response, next) => {
 	response.setHeader('Set-Cookie', 'persona_cookie=Esto es para segiuir al personal; HttpOnly');
@@ -60,9 +75,10 @@ exports.postUsuario = (request, response, next) => {
 }
 
 exports.postNewUser = (request, response, next) => {
-    const usuario = new Usuario(request.body.nombre, request.body.correo, request.body.contrasena);
+    const usuario = new Usuario(request.body.nombre, request.body.correo, request.body.rol, request.body.contrasena);
     request.session.error = undefined;
 
+    console.log(usuario);
     usuario.save()
         .then(() => {
             request.session.ultima_persona = request.body.nombre;
