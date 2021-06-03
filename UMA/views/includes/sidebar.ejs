@@ -21,11 +21,14 @@
                 </ul>
                 
          </ul>
-     
-       <a href="/usuarios/">Registrar Personal</a>
-        <a href="/zonas">Registrar Zona</a>
-        <a href="/especies">Registrar Especie</a>
-       
+        <% for( let p of permisos){  
+            if (p.permisosID === 1) { %>
+            <a href="/usuarios/">Registrar Personal</a>
+            <a href="/zonas">Registrar Zona</a>
+            <a href="/especies">Registrar Especie</a>
+            <% } 
+         } %>
+        
     </div>
     </div>
     <div class="col-10">

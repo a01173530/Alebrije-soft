@@ -60,14 +60,14 @@ module.exports = class Usuario {
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     static fetchAll() {
-        return db.execute('SELECT * FROM cuentas')
+        return db.execute('SELECT * FROM cuentas');
           
         //return personas;
         
     }
 
     static fetchAllRoles() {
-        return db.execute('SELECT * FROM roles')
+        return db.execute('SELECT * FROM roles');
           
         
     }
@@ -85,8 +85,8 @@ module.exports = class Usuario {
         return db.execute('SELECT * FROM cuentas WHERE correo LIKE ? OR nombre LIKE ?' , ['%'+criterio+'%','%'+criterio+'%']);
     }
 
-    static getRol(cuentaID) {
-        return db.execute('SELECT * FROM FROM cuentas WHERE cuentaID = ?', [cuentaID]);
+    static getPermisos(correo) {
+        return db.execute('SELECT P.permisosID FROM permisos P, permisos_roles PR, roles R, roles_cuentas RC, cuentas C WHERE P.permisosID=PR.permisosID AND PR.rollID= R.rollID AND R.rollID= RC.rollID AND RC.cuentaID=C.cuentaID AND C.correo=?', [correo]);
     }
 
 }

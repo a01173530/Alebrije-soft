@@ -4,7 +4,8 @@ exports.get=(request, response, next) => {
     Planta.fetchTarjetas()
       .then(([t,fieldData]) => {
         response.render('pagina_principal', {
-          tarjetas: t
+          tarjetas: t, 
+          permisos: request.session.permisos
         })
       })
       .catch(err => {

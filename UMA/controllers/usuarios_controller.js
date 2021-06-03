@@ -128,21 +128,29 @@ exports.postLogin = (request, response, next) => {
                     if (doMatch) {
                         request.session.isLoggedIn = true;
                         request.session.user = rows[0].correo;
-                        return request.session.save(err => {
-                            response.redirect('/');
-                        });
+                        Usuario.getPermisos(request.session.user)
+                        
+                        .then(([rows, fieldData]) => {
+                            request.session.permisos =rows;
+                             console.log(request.session.permisos);
+                             return response.redirect('/');
+                         }).catch (err => {
+                             request.session.error ='Usuario y/o contraseña incorrectos';
+                             return response.redirect('login');
+                         });
+                    }else{
+                        request.session.error ='Usuario y/o contraseña incorrectos';
+                        return response.redirect('login');
                     }
-                    request.session.error ='Usuario y/o contraseña incorrectos';
-                    response.redirect('login');
                 }).catch(err => {
                     request.session.error ='Usuario y/o contraseña incorrectos';
-                    response.redirect('login');
+                    return response.redirect('login');
                 });
 
         }).catch(err => {
             console.log(err);
             request.session.error ='Usuario y/o contraseña incorrectos';
-            response.redirect('login');
+            return response.redirect('login');
         });
 
 
