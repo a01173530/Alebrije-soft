@@ -14,7 +14,8 @@ exports.getNewUser = (request, response, next) => {
         response.render('nuevo_usuario', {
           error: request.session.error === undefined ? false : request.session.error,
           titulo:"Nuevo usuario",
-          roles: roles
+          roles: roles, 
+          permisos: request.session.permisos
       });
           
     })
@@ -39,7 +40,8 @@ exports.get=(request, response, next) => {
 
              response.render('personal', {
                 usuarios: usuarios,
-              ultima_persona: request.session.ultima_persona === undefined ? "No se ha registrado a nadie" : request.session.ultima_persona
+              ultima_persona: request.session.ultima_persona === undefined ? "No se ha registrado a nadie" : request.session.ultima_persona, 
+              permisos: request.session.permisos
             });
           })
           .catch(err => {
