@@ -14,7 +14,8 @@ exports.getNewUser = (request, response, next) => {
         response.render('nuevo_usuario', {
           error: request.session.error === undefined ? false : request.session.error,
           titulo:"Nuevo usuario",
-          roles: roles
+          roles: roles, 
+          permisos: request.session.permisos
       });
           
     })
@@ -39,7 +40,8 @@ exports.get=(request, response, next) => {
 
              response.render('personal', {
                 usuarios: usuarios,
-              ultima_persona: request.session.ultima_persona === undefined ? "No se ha registrado a nadie" : request.session.ultima_persona
+                exito_personal: request.session.ultimo_personal === undefined ? false : request.session.ultimo_personal, 
+              permisos: request.session.permisos
             });
           })
           .catch(err => {
@@ -81,7 +83,7 @@ exports.postNewUser = (request, response, next) => {
     console.log(usuario);
     usuario.save()
         .then(() => {
-            request.session.ultima_persona = request.body.nombre;
+            request.session.ultimo_personal = request.body.nombre;
             response.redirect('/usuarios/');
         }).catch( err => {
             console.log(err)
@@ -128,21 +130,29 @@ exports.postLogin = (request, response, next) => {
                     if (doMatch) {
                         request.session.isLoggedIn = true;
                         request.session.user = rows[0].correo;
-                        return request.session.save(err => {
-                            response.redirect('/');
-                        });
+                        Usuario.getPermisos(request.session.user)
+                        
+                        .then(([rows, fieldData]) => {
+                            request.session.permisos =rows;
+                             console.log(request.session.permisos);
+                             return response.redirect('/');
+                         }).catch (err => {
+                             request.session.error ='Usuario y/o contraseña incorrectos';
+                             return response.redirect('login');
+                         });
+                    }else{
+                        request.session.error ='Usuario y/o contraseña incorrectos';
+                        return response.redirect('login');
                     }
-                    request.session.error ='Usuario y/o contraseña incorrectos';
-                    response.redirect('login');
                 }).catch(err => {
                     request.session.error ='Usuario y/o contraseña incorrectos';
-                    response.redirect('login');
+                    return response.redirect('login');
                 });
 
         }).catch(err => {
             console.log(err);
             request.session.error ='Usuario y/o contraseña incorrectos';
-            response.redirect('login');
+            return response.redirect('login');
         });
 
 

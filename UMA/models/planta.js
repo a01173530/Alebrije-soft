@@ -64,6 +64,12 @@ module.exports = class Planta {
     static fetch(criterio){
         return db.execute('SELECT DISTINCT * FROM tarjetas WHERE NombreEsp LIKE ?',  ['%'+criterio+'%']);
     }
+
+    static fetchResumenPlantas(){
+        return db.execute('SELECT MIN(plantas.plantaID) as minimo, MAX(plantas.plantaID) as maximo, COUNT(plantas.plantaID) as total FROM plantas');
+    }
+    static fetchBuscarPlantas(especie, fecha){
+        return db.execute('SELECT IFNULL(MIN(plantas.plantaID), 0) as minimo, IFNULL(MAX(plantas.plantaID), 0) as maximo, COUNT(plantas.plantaID) as total FROM plantas, planta_especie WHERE plantas.plantaID = planta_especie.plantaID AND plantas.fecha LIKE ? AND EspID = ?', ['%'+fecha+'%', especie]);
+    }
     
 }//planta
-

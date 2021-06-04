@@ -4,12 +4,14 @@ const Zona = require('../models/zona');
 
 exports.getSemillas=(request, response, next) => {
 
-	response.render('inventario',{titulo:'Inventario Semilla'});
+	response.render('inventario',{titulo:'Inventario Semilla', 
+	permisos: request.session.permisos});
 }
 
 exports.getPlantasMadre=(request, response, next) => {
 
-	response.render('inventario',{titulo:'Inventario Plantas Madre'});
+	response.render('inventario',{titulo:'Inventario Plantas Madre', 
+	permisos: request.session.permisos});
 }
 
 exports.getAgregar=(request, response, next) => {
@@ -20,7 +22,8 @@ exports.getAgregar=(request, response, next) => {
 				.then(([zonas, fieldData]) => {
 					response.render('registrarPlanta', {
 						zonas: zonas,
-						especies: especies
+						especies: especies, 
+						permisos: request.session.permisos
 					});
 				}).catch(err => {
 					console.log(err);
@@ -50,7 +53,8 @@ exports.getPlantasAlta=(request, response, next) => {
           .then(([especies, fieldData]) => {
 			  response.render('plantasAlta', {
 				titulo:'Alta de planta',
-				especies: especies
+				especies: especies, 
+				permisos: request.session.permisos
 			});
           })
           .catch(err => {
@@ -72,6 +76,7 @@ exports.getPlantasBaja=(request, response, next) => {
 
 	Especie.fetchAll()
           .then(([especies, fieldData]) => {
+<<<<<<< HEAD
 			  Planta.fetchResumenPlantas()
 			  	.then(([info,fieldData]) => {
 					response.render('plantasBaja', {
@@ -80,6 +85,13 @@ exports.getPlantasBaja=(request, response, next) => {
 						info: info
 					});
 				  }).catch(err => {console.log(err)});
+=======
+			  response.render('plantasBaja', {
+				titulo:'Baja de planta',
+				especies: especies, 
+				permisos: request.session.permisos
+			});
+>>>>>>> 714de7b4af83471a0bca8c4d422a1f68a94492e6
           })
           .catch(err => {
                  console.log(err);
@@ -103,7 +115,8 @@ exports.getSemillasAlta=(request, response, next) => {
           .then(([especies, fieldData]) => {
 			  response.render('semillaAlta', {
 				titulo:'Alta de semillas',
-				especies: especies
+				especies: especies, 
+				permisos: request.session.permisos
 			});
 				
           })
@@ -128,7 +141,8 @@ exports.getSemillasBaja=(request, response, next) => {
           .then(([especies, fieldData]) => {
 			  response.render('semillaBaja', {
 				titulo:'Baja de semillas',
-				especies: especies
+				especies: especies, 
+				permisos: request.session.permisos
 			});
 				
           })
@@ -143,7 +157,8 @@ exports.getPlantulasAlta=(request, response, next) => {
           .then(([especies, fieldData]) => {
 			  response.render('plantulasAlta', {
 				titulo:'Alta de plantula',
-				especies: especies
+				especies: especies, 
+				permisos: request.session.permisos
 			});
 				
           })
@@ -168,7 +183,8 @@ exports.getPlantulasBaja=(request, response, next) => {
           .then(([especies, fieldData]) => {
 			  response.render('plantulasBaja', {
 				titulo:'Baja de plantula',
-				especies: especies
+				especies: especies, 
+				permisos: request.session.permisos
 			});
 				
           })

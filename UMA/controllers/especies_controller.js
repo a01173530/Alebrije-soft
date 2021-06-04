@@ -3,7 +3,9 @@ const Especie = require('../models/especie');
 
 exports.getNuevaEspecie=(request, response, next) => {
 
-	response.render('form_especie');
+	response.render('form_especie',{
+         permisos: request.session.permisos
+    });
 
 }
 
@@ -12,7 +14,7 @@ exports.postNuevaEspecie=(request, response, next) => {
    const especie = new Especie(request.body.EspID,request.body.NombreEsp, request.file.path);
    especie.save()
       .then(() => {
-        request.session.ultima_persona = request.body.NombreEsp;
+        request.session.ultima_especie = request.body.NombreEsp;
         response.redirect('/especies');
       }).catch( err => {
            console.log(err);
@@ -30,7 +32,8 @@ exports.get=(request, response, next) => {
 
              response.render('registrarEspecie', {
               especies: rows,
-              ultima_persona: request.session.ultima_persona === undefined ? "No se ha registrado a nadie" : request.session.ultima_persona
+              exito: request.session.ultima_especie === undefined ? false : request.session.ultima_especie, 
+              permisos: request.session.permisos
             });
           })
           .catch(err => {
@@ -50,7 +53,8 @@ exports.getespecie=(request, response, next) => {
 
              response.render('registrarEspecie', {
               especies: rows,
-              ultima_persona: request.session.ultima_persona === undefined ? "No se ha registrado a nadie" : request.session.ultima_persona
+              exito: request.session.ultima_especie === undefined ? false : request.session.ultima_especie, 
+              permisos: request.session.permisos
             });
           })
           .catch(err => {

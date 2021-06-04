@@ -3,7 +3,9 @@ const Zona = require('../models/zona');
 
 exports.getNuevaZona=(request, response, next) => {
 
-	response.render('form_zonas');
+	response.render('form_zonas',{
+        permisos: request.session.permisos
+    });
 
 }
 
@@ -12,7 +14,7 @@ exports.postNuevaZona=(request, response, next) => {
    const zona = new Zona(request.body.nombreZona);
    zona.save()
       .then(() => {
-        request.session.ultima_persona = request.body.nombreZona;
+        request.session.ultima_zona = request.body.nombreZona;
         response.redirect('/zonas');
       }).catch( err => {
            console.log(err);
@@ -30,7 +32,8 @@ exports.get=(request, response, next) => {
 
              response.render('zona', {
               zonas: rows,
-              ultima_persona: request.session.ultima_persona === undefined ? "No se ha registrado a nadie" : request.session.ultima_persona
+              exito_zona: request.session.ultima_zona === undefined ? false : request.session.ultima_zona, 
+              permisos: request.session.permisos
             });
           })
           .catch(err => {
@@ -50,7 +53,8 @@ exports.getezona=(request, response, next) => {
 
              response.render('zona', {
               zona: rows,
-              ultima_persona: request.session.ultima_persona === undefined ? "No se ha registrado a nadie" : request.session.ultima_persona
+              exito_zona: request.session.ultima_zona === undefined ? false : request.session.ultima_zona, 
+              permisos: request.session.permisos
             });
           })
           .catch(err => {
