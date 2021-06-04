@@ -72,15 +72,30 @@ exports.getPlantasBaja=(request, response, next) => {
 
 	Especie.fetchAll()
           .then(([especies, fieldData]) => {
-			  response.render('plantasBaja', {
-				titulo:'Baja de planta',
-				especies: especies
-			});
+			  Planta.fetchResumenPlantas()
+			  	.then(([info,fieldData]) => {
+					response.render('plantasBaja', {
+						titulo:'Baja de planta',
+						especies: especies,
+						info: info
+					});
+				  }).catch(err => {console.log(err)});
           })
           .catch(err => {
                  console.log(err);
           });
 }
+
+exports.getBuscar=(request, response, next) => {
+
+	console.log('especie:' + request.params.especie + ' fecha:'+request.params.fecha);
+  
+	Planta.fetchBuscarPlantas(request.params.especie, request.params.fecha)
+				  .then(([rows, fieldData]) => {
+					  return response.status(200).json({info: rows});
+			  }).catch(err => console.log(err));
+  }
+
 
 exports.getSemillasAlta=(request, response, next) => {
 
