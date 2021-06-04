@@ -76,22 +76,17 @@ exports.getPlantasBaja=(request, response, next) => {
 
 	Especie.fetchAll()
           .then(([especies, fieldData]) => {
-<<<<<<< HEAD
+
 			  Planta.fetchResumenPlantas()
 			  	.then(([info,fieldData]) => {
 					response.render('plantasBaja', {
 						titulo:'Baja de planta',
 						especies: especies,
-						info: info
+						info: info,
+						permisos: request.session.permisos
 					});
 				  }).catch(err => {console.log(err)});
-=======
-			  response.render('plantasBaja', {
-				titulo:'Baja de planta',
-				especies: especies, 
-				permisos: request.session.permisos
-			});
->>>>>>> 714de7b4af83471a0bca8c4d422a1f68a94492e6
+
           })
           .catch(err => {
                  console.log(err);
