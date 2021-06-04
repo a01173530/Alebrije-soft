@@ -40,7 +40,7 @@ exports.get=(request, response, next) => {
 
              response.render('personal', {
                 usuarios: usuarios,
-              ultima_persona: request.session.ultima_persona === undefined ? "No se ha registrado a nadie" : request.session.ultima_persona, 
+                exito_personal: request.session.ultimo_personal === undefined ? false : request.session.ultimo_personal, 
               permisos: request.session.permisos
             });
           })
@@ -83,7 +83,7 @@ exports.postNewUser = (request, response, next) => {
     console.log(usuario);
     usuario.save()
         .then(() => {
-            request.session.ultima_persona = request.body.nombre;
+            request.session.ultimo_personal = request.body.nombre;
             response.redirect('/usuarios/');
         }).catch( err => {
             console.log(err)
