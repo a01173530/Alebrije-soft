@@ -57,6 +57,11 @@ module.exports = class Planta {
         });
     } //save Plantas
 
+
+    static bajarPlantas(razon, minimo, maximo){
+        return db.execute('UPDATE plantasactivas SET trasladoID = ?, fecha = current_timestamp() WHERE plantaID BETWEEN ? AND ?', [razon, minimo, maximo]);
+    }
+
     static fetchTarjetas(){
         return db.execute('SELECT DISTINCT * FROM tarjetas');
     }
@@ -69,7 +74,7 @@ module.exports = class Planta {
         return db.execute('SELECT MIN(plantas.plantaID) as minimo, MAX(plantas.plantaID) as maximo, COUNT(plantas.plantaID) as total FROM plantas');
     }
     static fetchBuscarPlantas(especie, fecha){
-        return db.execute('SELECT IFNULL(MIN(plantas.plantaID), 0) as minimo, IFNULL(MAX(plantas.plantaID), 0) as maximo, COUNT(plantas.plantaID) as total FROM plantas, planta_especie WHERE plantas.plantaID = planta_especie.plantaID AND plantas.fecha LIKE ? AND EspID = ?', ['%'+fecha+'%', especie]);
+        return db.execute('SELECT IFNULL(MIN(plantasactivas.plantaID), 0) as minimo, IFNULL(MAX(plantasactivas.plantaID), 0) as maximo, COUNT(plantasactivas.plantaID) as total FROM plantasactivas, planta_especie WHERE plantasactivas.plantaID = planta_especie.plantaID AND plantasactivas.fecha LIKE ? AND EspID = ?', ['%'+fecha+'%', especie]);
     }
     
 }//planta

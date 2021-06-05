@@ -103,6 +103,13 @@ exports.getBuscar=(request, response, next) => {
 			  }).catch(err => console.log(err));
   }
 
+  exports.postPlantasBaja=(request, response, next) => {
+
+		Planta.bajarPlantas(request.body.razon, request.body.minimo, request.body.maximo)
+			.then(() => {
+				response.redirect('/');
+			}).catch(err => {onsole.log(err)});
+}
 
 exports.getSemillasAlta=(request, response, next) => {
 

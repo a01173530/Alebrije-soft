@@ -29,7 +29,9 @@
             </div>
         <br>
 
-        <form>
+        <form action ="plantasBaja" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="inputState">Seleccion</label>
@@ -48,21 +50,20 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="inputState">Razón de baja</label>
-                            <select id="inputState" class="form-control">
-                                <option selected>Muerte</option>
-                                <option>Donacion otorgada</option>
-                                <option>Venta</option>
+                            <select id="inputState" class="form-control" name="razon">
+                                <option value="9">Muerte</option>
+                                <option value="8">Donacion otorgada</option>
+                                <option value="1">Venta</option>
+                                <option value="10">Robo</option>
                             </select>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="disabledTextInput">Minimo</label>
-                    <input type="text" id="disabledTextInput" class="form-control"
-                        placeholder="Rango Minimo de IDs">
+                    <input type="text" id="disabledTextInput" class="form-control" placeholder="Rango Minimo de IDs" name="minimo">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="disabledTextInput">Maximo</label>
-                    <input type="text" id="disabledTextInput" class="form-control"
-                        placeholder="Rango Maximo de IDs">
+                    <input type="text" id="disabledTextInput" class="form-control" placeholder="Rango Maximo de IDs" name="maximo">
                 </div>
             </div>
             <br>
