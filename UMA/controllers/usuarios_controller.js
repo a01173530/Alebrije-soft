@@ -34,7 +34,7 @@ exports.get=(request, response, next) => {
 	response.setHeader('Set-Cookie', 'persona_cookie=Esto es para segiuir al personal; HttpOnly');
 	console.log(request.cookies.persona_cookie);
 
-	Usuario.fetchAll()
+	Usuario.tablaPersonas()
           .then(([usuarios, fieldData]) => {
              console.log(usuarios);
 
@@ -61,7 +61,7 @@ exports.postUsuario = (request, response, next) => {
 
     Usuario.delete(request.body.cuentaID)
         .then(() => {
-             Usuario.fetchAll()
+             Usuario.tablaPersonas()
                 .then(([usuarios, fieldData]) => {
                     return response.status(200).json({usuarios: usuarios});
                 })

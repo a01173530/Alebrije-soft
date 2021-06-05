@@ -66,6 +66,12 @@ module.exports = class Usuario {
         
     }
 
+    static tablaPersonas() {
+        return db.execute('SELECT C.cuentaID, C.nombre, C.correo, R.rol FROM cuentas C, roles_cuentas RC, roles R WHERE C.cuentaID=RC.cuentaID AND RC.rollID= R.rollID');
+          
+        
+    }
+
     static fetchAllRoles() {
         return db.execute('SELECT * FROM roles');
           
@@ -82,7 +88,7 @@ module.exports = class Usuario {
     }
 
     static fetch(criterio) {
-        return db.execute('SELECT * FROM cuentas WHERE correo LIKE ? OR nombre LIKE ?' , ['%'+criterio+'%','%'+criterio+'%']);
+        return db.execute('SELECT cuentas.cuentaID, cuentas.nombre, cuentas.correo, roles.rol FROM cuentas NATURAL JOIN roles_cuentas NATURAL JOIN roles WHERE  cuentas.correo LIKE ? OR cuentas.nombre LIKE ? OR roles.rol LIKE ?' , ['%'+criterio+'%','%'+criterio+'%','%'+criterio+'%']);
     }
 
     static getPermisos(correo) {
