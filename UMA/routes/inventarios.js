@@ -12,11 +12,18 @@ router.get('/agregar',  isAuth, inventariosController.getAgregar);
 
 router.post('/agregar',  isAuth, inventariosController.postAgregar);
 
+router.get('/plantasMadreAlta',  isAuth, inventariosController.getPlantasMadreAlta);
+router.post('/plantasMadreAlta', isAuth, inventariosController.postPlantasMadreAlta);
+
+router.get('/plantasMadreBaja/:especie&:fecha', isAuth, inventariosController.getBuscarMadre);
+router.get('/plantasMadreBaja',  isAuth, inventariosController.getPlantasMadreBaja);
+router.post('/plantasMadreBaja', isAuth, inventariosController.postPlantasMadreBaja);
+
 router.get('/plantasAlta',  isAuth, inventariosController.getPlantasAlta);
 router.post('/plantasAlta', isAuth, inventariosController.postPlantasAlta);
 
 router.get('/plantasBaja',  isAuth, inventariosController.getPlantasBaja);
-router.get('/plantasBaja/:especie&:fecha', isAuth, inventariosController.getBuscar);
+router.get('/plantasBaja/:especie&:fecha', isAuth, inventariosController.getBuscarPlantas);
 router.post('/plantasBaja', isAuth, inventariosController.postPlantasBaja);
 
 router.get('/plantulas-alta',  isAuth, inventariosController.getPlantulasAlta);
@@ -28,9 +35,5 @@ router.get('/semillasAlta',  isAuth, inventariosController.getSemillasAlta);
 router.post('/semillasAlta', isAuth, inventariosController.postSemillasAlta);
 
 router.get('/semillasBaja',  isAuth, inventariosController.getSemillasBaja);
-
-
-
-
 
 module.exports = router;

@@ -46,7 +46,71 @@ exports.postAgregar=(request, response, next) => {
 			response.redirect('/');	
 		});
 }
+//plantas madre
+exports.getPlantasMadreAlta=(request, response, next) => {
 
+	Especie.fetchAll()
+          .then(([especies, fieldData]) => {
+			  response.render('plantasMadreAlta', {
+				titulo:'Alta de Planta Madre',
+				especies: especies, 
+				permisos: request.session.permisos
+			});
+          })
+          .catch(err => {
+                 console.log(err);
+          });
+	
+}
+
+exports.postPlantasMadreAlta=(request, response, next) => {
+
+	const madre = new Planta(request.body.razon, request.body.zona, request.body.especie);
+
+	for(let i = 0; i<request.body.cantidad; i++){
+		madre.savePlantasMadre();
+	}
+
+	response.redirect('/');
+}
+
+exports.getBuscarMadre=(request, response, next) => {
+
+	Planta.fetchBuscarPlantasMadre(request.params.especie, request.params.fecha)
+				  .then(([rows, fieldData]) => {
+					  return response.status(200).json({info: rows});
+			  }).catch(err => console.log(err));
+}
+
+exports.getPlantasMadreBaja=(request, response, next) => {
+
+	Especie.fetchAll()
+          .then(([especies, fieldData]) => {
+			  Planta.fetchResumenPlantasMadre()
+			  	.then(([info,fieldData]) => {
+					response.render('plantasMadreBaja', {
+						titulo:'Baja de planta Madre',
+						especies: especies,
+						info: info,
+						permisos: request.session.permisos
+					});
+				  }).catch(err => {console.log(err)});
+          })
+          .catch(err => {
+                 console.log(err);
+          });
+}
+
+exports.postPlantasMadreBaja=(request, response, next) => {
+
+	Planta.bajarPlantasMadre(request.body.razon, request.body.minimo, request.body.maximo)
+		.then(() => {
+			response.redirect('/');
+		}).catch(err => {onsole.log(err)});
+}
+
+
+//plantas
 exports.getPlantasAlta=(request, response, next) => {
 
 	Especie.fetchAll()
@@ -93,7 +157,7 @@ exports.getPlantasBaja=(request, response, next) => {
           });
 }
 
-exports.getBuscar=(request, response, next) => {
+exports.getBuscarPlantas=(request, response, next) => {
 
 	console.log('especie:' + request.params.especie + ' fecha:'+request.params.fecha);
   
@@ -103,7 +167,7 @@ exports.getBuscar=(request, response, next) => {
 			  }).catch(err => console.log(err));
   }
 
-  exports.postPlantasBaja=(request, response, next) => {
+exports.postPlantasBaja=(request, response, next) => {
 
 		Planta.bajarPlantas(request.body.razon, request.body.minimo, request.body.maximo)
 			.then(() => {

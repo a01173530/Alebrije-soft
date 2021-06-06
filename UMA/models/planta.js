@@ -9,6 +9,18 @@ module.exports = class Planta {
         this.especie = especie;
     }
 
+    savePlantasMadre(){
+        return db.execute('INSERT INTO plantasmadre (plantaMadreID, fecha, trasladoID, zonaID, cuentaID) VALUES (NULL, NULL, ?, ?, 1)',
+        [this.razon, this.zona]
+        ).then( () => {
+            db.execute('INSERT INTO plantamadre_especie (fecha, plantaMadreID, EspID) VALUES (NULL, NULL, ?)',
+            [this.especie]
+            )
+        }).catch(err => {
+            console.log(err);
+        });
+    } //save Plantas
+
     savePlantas(){
         return db.execute('INSERT INTO plantas (plantaID, fecha, trasladoID, zonaID, cuentaID) VALUES (NULL, NULL, ?, ?, 1)',
         [this.razon, this.zona]
@@ -62,6 +74,10 @@ module.exports = class Planta {
         return db.execute('UPDATE plantasactivas SET trasladoID = ?, fecha = current_timestamp() WHERE plantaID BETWEEN ? AND ?', [razon, minimo, maximo]);
     }
 
+    static bajarPlantasMadre(razon, minimo, maximo){
+        return db.execute('UPDATE plantasmadreactivas SET trasladoID = ?, fecha = current_timestamp() WHERE plantaMadreID BETWEEN ? AND ?', [razon, minimo, maximo]);
+    }
+
     static fetchTarjetas(){
         return db.execute('SELECT DISTINCT * FROM tarjetas');
     }
@@ -71,10 +87,19 @@ module.exports = class Planta {
     }
 
     static fetchResumenPlantas(){
-        return db.execute('SELECT MIN(plantas.plantaID) as minimo, MAX(plantas.plantaID) as maximo, COUNT(plantas.plantaID) as total FROM plantas');
+        return db.execute('SELECT MIN(plantasactivas.plantaID) as minimo, MAX(plantasactivas.plantaID) as maximo, COUNT(plantasactivas.plantaID) as total FROM plantasactivas');
     }
+
     static fetchBuscarPlantas(especie, fecha){
         return db.execute('SELECT IFNULL(MIN(plantasactivas.plantaID), 0) as minimo, IFNULL(MAX(plantasactivas.plantaID), 0) as maximo, COUNT(plantasactivas.plantaID) as total FROM plantasactivas, planta_especie WHERE plantasactivas.plantaID = planta_especie.plantaID AND plantasactivas.fecha LIKE ? AND EspID = ?', ['%'+fecha+'%', especie]);
+    }
+
+    static fetchResumenPlantasMadre(){
+        return db.execute('SELECT MIN(plantasmadreactivas.plantaMadreID) as minimo, MAX(plantasmadreactivas.plantaMadreID) as maximo, COUNT(plantasmadreactivas.plantaMadreID) as total FROM plantasmadreactivas');
+    }
+
+    static fetchBuscarPlantasMadre(especie, fecha){
+        return db.execute('SELECT IFNULL(MIN(plantasmadreactivas.plantaMadreID), 0) as minimo, IFNULL(MAX(plantasmadreactivas.plantaMadreID), 0) as maximo, COUNT(plantasmadreactivas.plantaMadreID) as total FROM plantasmadreactivas, plantamadre_especie WHERE plantasmadreactivas.plantaMadreID = plantamadre_especie.plantaMadreID AND plantasmadreactivas.fecha LIKE ? AND EspID = ?', ['%'+fecha+'%', especie]);
     }
     
 }//planta
