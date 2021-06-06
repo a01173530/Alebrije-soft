@@ -31,7 +31,7 @@ router.post('/plantulas-alta', isAuth, inventariosController.postPlantulasAlta);
 
 router.get('/plantulas-baja',  isAuth, inventariosController.getPlantulasBaja);
 router.get('/plantulas-baja/:especie&:fecha',  isAuth, inventariosController.getBuscarPlantulas);
-router.post('/plantas-baja', isAuth, inventariosController.postPlantulasBaja);
+router.post('/plantulas-baja', isAuth, inventariosController.postPlantulasBaja);
 
 router.get('/semillasAlta',  isAuth, inventariosController.getSemillasAlta);
 router.post('/semillasAlta', isAuth, inventariosController.postSemillasAlta);

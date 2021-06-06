@@ -206,12 +206,17 @@ exports.getSemillasBaja=(request, response, next) => {
 
 	Especie.fetchAll()
           .then(([especies, fieldData]) => {
-			  response.render('semillaBaja', {
-				titulo:'Baja de semillas',
-				especies: especies, 
-				permisos: request.session.permisos
-			});
-				
+
+			  Planta.fetchResumenSemillas()
+			  	.then(([info,fieldData]) => {
+					response.render('semillaBaja', {
+						titulo:'Baja de Semillas',
+						especies: especies,
+						info: info,
+						permisos: request.session.permisos
+					});
+				  }).catch(err => {console.log(err)});
+
           })
           .catch(err => {
                  console.log(err);

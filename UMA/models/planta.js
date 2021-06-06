@@ -58,10 +58,10 @@ module.exports = class Planta {
     } //save Plantas
 
     saveLotesSemillas(){
-        return db.execute('INSERT INTO lotessemilla (loteSemillaID, fecha, trasladoID, zonaID, cuentaID) VALUES (NULL, NULL, ?, ?, 1)',
+        return db.execute('INSERT INTO lotessemillas (loteSemillaID, fecha, trasladoID, zonaID, cuentaID) VALUES (NULL, NULL, ?, ?, 1)',
         [this.razon, this.zona]
         ).then( () => {
-            db.execute('INSERT INTO lotesemilla_especie (fecha, loteSemillaID, EspID) VALUES (NULL, NULL, ?)',
+            db.execute('INSERT INTO lotesemillas_especie (fecha, loteSemillaID, EspID) VALUES (NULL, NULL, ?)',
             [this.especie]
             )
         }).catch(err => {
