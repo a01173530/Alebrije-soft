@@ -30,10 +30,14 @@ router.get('/plantulas-alta',  isAuth, inventariosController.getPlantulasAlta);
 router.post('/plantulas-alta', isAuth, inventariosController.postPlantulasAlta);
 
 router.get('/plantulas-baja',  isAuth, inventariosController.getPlantulasBaja);
+router.get('/plantulas-baja/:especie&:fecha',  isAuth, inventariosController.getBuscarPlantulas);
+router.post('/plantas-baja', isAuth, inventariosController.postPlantulasBaja);
 
 router.get('/semillasAlta',  isAuth, inventariosController.getSemillasAlta);
 router.post('/semillasAlta', isAuth, inventariosController.postSemillasAlta);
 
 router.get('/semillasBaja',  isAuth, inventariosController.getSemillasBaja);
+router.get('/semillasBaja/:especie&:fecha',  isAuth, inventariosController.getBuscarSemillas);
+router.post('/semillasBaja',  isAuth, inventariosController.postSemillasBaja);
 
 module.exports = router;

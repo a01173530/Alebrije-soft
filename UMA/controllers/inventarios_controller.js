@@ -175,6 +175,7 @@ exports.postPlantasBaja=(request, response, next) => {
 			}).catch(err => {onsole.log(err)});
 }
 
+//Semillas
 exports.getSemillasAlta=(request, response, next) => {
 
 	Especie.fetchAll()
@@ -217,6 +218,25 @@ exports.getSemillasBaja=(request, response, next) => {
           });
 }
 
+
+exports.postSemillasBaja=(request, response, next) => {
+
+	Planta.bajarSemillas(request.body.razon, request.body.minimo, request.body.maximo)
+			.then(() => {
+				response.redirect('/');
+			}).catch(err => {onsole.log(err)});
+
+}
+
+exports.getBuscarSemillas=(request, response, next) => {
+
+	Planta.fetchBuscarSemillas(request.params.especie, request.params.fecha)
+		.then(([rows, fieldData]) => {
+			return response.status(200).json({info: rows});
+		}).catch(err => console.log(err));
+
+}
+
 exports.getPlantulasAlta=(request, response, next) => {
 
 	Especie.fetchAll()
@@ -243,19 +263,43 @@ exports.postPlantulasAlta=(request, response, next) => {
 	response.redirect('/');
 }
 
+exports.getBuscarPlantulas=(request, response, next) => {
+
+	Planta.fetchBuscarPlantulas(request.params.especie, request.params.fecha)
+		.then(([rows, fieldData]) => {
+			return response.status(200).json({info: rows});
+		}).catch(err => console.log(err));
+
+}
+
 exports.getPlantulasBaja=(request, response, next) => {
 
 	Especie.fetchAll()
           .then(([especies, fieldData]) => {
-			  response.render('plantulasBaja', {
-				titulo:'Baja de plantula',
-				especies: especies, 
-				permisos: request.session.permisos
-			});
-				
+
+			  Planta.fetchResumenPlantulas()
+			  	.then(([info,fieldData]) => {
+					response.render('plantulasBaja', {
+						titulo:'Baja de Plantula',
+						especies: especies,
+						info: info,
+						permisos: request.session.permisos
+					});
+				  }).catch(err => {console.log(err)});
+
           })
           .catch(err => {
                  console.log(err);
           });
 
 }
+
+exports.postPlantulasBaja=(request, response, next) => {
+
+	Planta.bajarPlantulas(request.body.razon, request.body.minimo, request.body.maximo)
+			.then(() => {
+				response.redirect('/');
+			}).catch(err => {console.log(err)});
+
+}
+
