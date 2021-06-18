@@ -1,9 +1,6 @@
 <div class="row">
     <div class="col-2"  id="contentside">
       <div class="sidebar">
-        <a href="#inventarioSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Inventarios</a>
-        <ul class="collapse lisst-unstyled" id="inventarioSubmenu">
-
                 <a href="#plantaMadreSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Plantas Madre</a>
                 <ul class="collapse lisst-unstyled" id="plantaMadreSubMenu">
                     <a href="/inventarios/plantasMadreAlta">Dar de Alta</a>
@@ -27,7 +24,6 @@
                     <a href="/inventarios/semillasAlta">Dar de Alta</a>
                     <a href="/inventarios/semillasBaja">Dar de Baja</a>
                 </ul>  
-         </ul>
 
         <% for( let p of permisos){  
             if (p.permisosID === 1) { %>

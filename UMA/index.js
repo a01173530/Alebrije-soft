@@ -47,11 +47,6 @@ const fileStorage = multer.diskStorage({
 app.use(multer({ storage: fileStorage }).single('imagen')); 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-//Middleware
-app.use((request, response, next) => {
-    console.log('Middleware!');
-    next(); //Le permite a la petición avanzar hacia el siguiente middleware
-});
 
 app.use(csrfProtection); 
 app.use(csrfMiddleware);
