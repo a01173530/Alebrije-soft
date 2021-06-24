@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2021 at 08:56 PM
+-- Generation Time: Jun 24, 2021 at 04:02 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `uma_rbac`
+-- Database: `uma_tarjetas`
 --
 
 -- --------------------------------------------------------
@@ -29,6 +29,8 @@ SET time_zone = "+00:00";
 --
 CREATE TABLE `cantidad_plantas` (
 `NombreEsp` varchar(40)
+,`EspID` int(11)
+,`fecha` timestamp
 ,`cantidadPlantas` bigint(21)
 );
 
@@ -218,6 +220,8 @@ INSERT INTO `lotessemillas` (`loteSemillaID`, `fecha`, `trasladoID`, `zonaID`, `
 --
 CREATE TABLE `lotes_plantula` (
 `NombreEsp` varchar(40)
+,`EspID` int(11)
+,`fecha` timestamp
 ,`cantidadLotesPlantulas` bigint(21)
 );
 
@@ -229,6 +233,8 @@ CREATE TABLE `lotes_plantula` (
 --
 CREATE TABLE `lotes_semillas` (
 `NombreEsp` varchar(40)
+,`EspID` int(11)
+,`fecha` timestamp
 ,`cantidadSemillas` bigint(21)
 );
 
@@ -442,11 +448,13 @@ CREATE TABLE `plantasmadreactivas` (
 -- --------------------------------------------------------
 
 --
--- Stand-in structure for view `plantas_madre2`
+-- Stand-in structure for view `plantas_madre`
 -- (See below for the actual view)
 --
-CREATE TABLE `plantas_madre2` (
+CREATE TABLE `plantas_madre` (
 `NombreEsp` varchar(40)
+,`EspID` int(11)
+,`fecha` timestamp
 ,`cantidadPlantasMadre` bigint(21)
 ,`imagen` varchar(300)
 );
@@ -572,11 +580,13 @@ CREATE TABLE `semillasactivas` (
 -- --------------------------------------------------------
 
 --
--- Stand-in structure for view `tarjetas3`
+-- Stand-in structure for view `tarjetas`
 -- (See below for the actual view)
 --
-CREATE TABLE `tarjetas3` (
+CREATE TABLE `tarjetas` (
 `NombreEsp` varchar(40)
+,`EspID` int(11)
+,`fecha` timestamp
 ,`cantidadPlantasMadre` bigint(21)
 ,`cantidadPlantas` bigint(21)
 ,`cantidadLotesPlantulas` bigint(21)
@@ -654,7 +664,7 @@ INSERT INTO `zonas` (`zonaID`, `nombreZona`) VALUES
 --
 DROP TABLE IF EXISTS `cantidad_plantas`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cantidad_plantas`  AS SELECT `e`.`NombreEsp` AS `NombreEsp`, count(`p`.`plantaID`) AS `cantidadPlantas` FROM ((`especie` `e` join `plantasactivas` `p`) join `planta_especie` `pe`) WHERE `e`.`EspID` = `pe`.`EspID` AND `p`.`plantaID` = `pe`.`plantaID` GROUP BY `e`.`EspID` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cantidad_plantas`  AS SELECT `e`.`NombreEsp` AS `NombreEsp`, `e`.`EspID` AS `EspID`, `p`.`fecha` AS `fecha`, count(`p`.`plantaID`) AS `cantidadPlantas` FROM ((`especie` `e` join `plantasactivas` `p`) join `planta_especie` `pe`) WHERE `e`.`EspID` = `pe`.`EspID` AND `p`.`plantaID` = `pe`.`plantaID` GROUP BY `e`.`EspID` ;
 
 -- --------------------------------------------------------
 
@@ -663,7 +673,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `lotes_plantula`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `lotes_plantula`  AS SELECT `e`.`NombreEsp` AS `NombreEsp`, count(`lp`.`lotePlantulaID`) AS `cantidadLotesPlantulas` FROM ((`especie` `e` join `plantulasactivas` `lp`) join `loteplantula_especie` `lpe`) WHERE `e`.`EspID` = `lpe`.`EspID` AND `lp`.`lotePlantulaID` = `lpe`.`lotePlantulaID` GROUP BY `e`.`EspID` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `lotes_plantula`  AS SELECT `e`.`NombreEsp` AS `NombreEsp`, `e`.`EspID` AS `EspID`, `lp`.`fecha` AS `fecha`, count(`lp`.`lotePlantulaID`) AS `cantidadLotesPlantulas` FROM ((`especie` `e` join `plantulasactivas` `lp`) join `loteplantula_especie` `lpe`) WHERE `e`.`EspID` = `lpe`.`EspID` AND `lp`.`lotePlantulaID` = `lpe`.`lotePlantulaID` GROUP BY `e`.`EspID` ;
 
 -- --------------------------------------------------------
 
@@ -672,7 +682,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `lotes_semillas`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `lotes_semillas`  AS SELECT `e`.`NombreEsp` AS `NombreEsp`, count(`s`.`loteSemillaID`) AS `cantidadSemillas` FROM ((`especie` `e` join `semillasactivas` `s`) join `lotesemillas_especie` `lse`) WHERE `e`.`EspID` = `lse`.`EspID` AND `s`.`loteSemillaID` = `lse`.`loteSemillaID` GROUP BY `e`.`EspID` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `lotes_semillas`  AS SELECT `e`.`NombreEsp` AS `NombreEsp`, `e`.`EspID` AS `EspID`, `s`.`fecha` AS `fecha`, count(`s`.`loteSemillaID`) AS `cantidadSemillas` FROM ((`especie` `e` join `semillasactivas` `s`) join `lotesemillas_especie` `lse`) WHERE `e`.`EspID` = `lse`.`EspID` AND `s`.`loteSemillaID` = `lse`.`loteSemillaID` GROUP BY `e`.`EspID` ;
 
 -- --------------------------------------------------------
 
@@ -695,11 +705,11 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Structure for view `plantas_madre2`
+-- Structure for view `plantas_madre`
 --
-DROP TABLE IF EXISTS `plantas_madre2`;
+DROP TABLE IF EXISTS `plantas_madre`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `plantas_madre2`  AS SELECT `e`.`NombreEsp` AS `NombreEsp`, count(`pm`.`plantaMadreID`) AS `cantidadPlantasMadre`, `e`.`imagen` AS `imagen` FROM ((`especie` `e` join `plantasmadreactivas` `pm`) join `plantamadre_especie` `pme`) WHERE `e`.`EspID` = `pme`.`EspID` AND `pm`.`plantaMadreID` = `pme`.`plantaMadreID` GROUP BY `e`.`EspID` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `plantas_madre`  AS SELECT `e`.`NombreEsp` AS `NombreEsp`, `e`.`EspID` AS `EspID`, `pm`.`fecha` AS `fecha`, count(`pm`.`plantaMadreID`) AS `cantidadPlantasMadre`, `e`.`imagen` AS `imagen` FROM ((`especie` `e` join `plantasmadreactivas` `pm`) join `plantamadre_especie` `pme`) WHERE `e`.`EspID` = `pme`.`EspID` AND `pm`.`plantaMadreID` = `pme`.`plantaMadreID` GROUP BY `e`.`EspID` ;
 
 -- --------------------------------------------------------
 
@@ -722,11 +732,11 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Structure for view `tarjetas3`
+-- Structure for view `tarjetas`
 --
-DROP TABLE IF EXISTS `tarjetas3`;
+DROP TABLE IF EXISTS `tarjetas`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `tarjetas3`  AS SELECT `plantas_madre2`.`NombreEsp` AS `NombreEsp`, `plantas_madre2`.`cantidadPlantasMadre` AS `cantidadPlantasMadre`, ifnull(`cantidad_plantas`.`cantidadPlantas`,0) AS `cantidadPlantas`, ifnull(`lotes_plantula`.`cantidadLotesPlantulas`,0) AS `cantidadLotesPlantulas`, ifnull(`lotes_semillas`.`cantidadSemillas`,0) AS `cantidadLotesSemillas`, `plantas_madre2`.`imagen` AS `imagen` FROM (((`plantas_madre2` left join `cantidad_plantas` on(`plantas_madre2`.`NombreEsp` = `cantidad_plantas`.`NombreEsp`)) left join `lotes_plantula` on(`plantas_madre2`.`NombreEsp` = `lotes_plantula`.`NombreEsp`)) left join `lotes_semillas` on(`plantas_madre2`.`NombreEsp` = `lotes_semillas`.`NombreEsp`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `tarjetas`  AS SELECT `plantas_madre`.`NombreEsp` AS `NombreEsp`, `plantas_madre`.`EspID` AS `EspID`, `plantas_madre`.`fecha` AS `fecha`, `plantas_madre`.`cantidadPlantasMadre` AS `cantidadPlantasMadre`, ifnull(`cantidad_plantas`.`cantidadPlantas`,0) AS `cantidadPlantas`, ifnull(`lotes_plantula`.`cantidadLotesPlantulas`,0) AS `cantidadLotesPlantulas`, ifnull(`lotes_semillas`.`cantidadSemillas`,0) AS `cantidadLotesSemillas`, `plantas_madre`.`imagen` AS `imagen` FROM (((`plantas_madre` left join `cantidad_plantas` on(`plantas_madre`.`NombreEsp` = `cantidad_plantas`.`NombreEsp`)) left join `lotes_plantula` on(`plantas_madre`.`NombreEsp` = `lotes_plantula`.`NombreEsp`)) left join `lotes_semillas` on(`plantas_madre`.`NombreEsp` = `lotes_semillas`.`NombreEsp`)) ;
 
 --
 -- Indexes for dumped tables

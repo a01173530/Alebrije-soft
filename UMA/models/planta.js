@@ -88,11 +88,11 @@ module.exports = class Planta {
 
     //tarjetas
     static fetchTarjetas(){
-        return db.execute('SELECT DISTINCT * FROM tarjetas3');
+        return db.execute('SELECT DISTINCT NombreEsp, EspID, cantidadPlantasMadre, cantidadPlantas, cantidadLotesPlantulas, cantidadLotesSemillas, imagen FROM tarjetas');
     }
 
     static fetch(criterio){
-        return db.execute('SELECT DISTINCT * FROM tarjetas3 WHERE NombreEsp LIKE ?',  ['%'+criterio+'%']);
+        return db.execute('SELECT DISTINCT NombreEsp, EspID, cantidadPlantasMadre, cantidadPlantas, cantidadLotesPlantulas, cantidadLotesSemillas, imagen FROM tarjetas WHERE NombreEsp LIKE ? OR EspID LIKE ?',  ['%'+criterio+'%', '%'+criterio+'%']);
     }
 
     //resumenes
